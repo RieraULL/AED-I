@@ -15,25 +15,6 @@ struct struct_complex_t {
 
 typedef struct struct_complex_t complex_t; 
 
-
-void inicializa_complejo(complex_t* c, double r, double i)
-{
-	c->r_ = r;
-	c->i_ = i;
-}
-
-void inicializa_complejo(complex_t* c)
-{
-	c->r_ = 0;
-	c->i_ = 0;
-}
-
-void destruye_complejo(complex_t* c)
-{
-	c->r_ = 0;
-	c->i_ = 0;
-}
-
 void imprime_complejo(complex_t* c)
 {
 	printf(" %3.1lf + %3.1lfi “, c->r_, c->i_);
@@ -78,22 +59,6 @@ complex_t suma(complex_t* c1,complex_t* c2)
 	aux.i_ = c1->i_ + c2->i_;
 
 	return aux;
-}
-
-complex_t producto(complex_t* c1,complex_t* c2)
-{
-	complex_t aux;
-
-	aux.r_ = c1->r_ * c2->r_ - c1->i_ * c2->i_;
-	aux.i_ = c1->r_ * c2->i_ + c2->r_ * c1->i_ ;
-
-	return aux;	
-}
-
-
-bool iguales(complex_t* c1,complex_t& c2)
-{
-	return (fabs(c1->r_ - c2->r_) < EPSILON) && (fabs(c1->i_ - c2->i_) < EPSILON);
 }
 ```
 
