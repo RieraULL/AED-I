@@ -31,7 +31,7 @@ void destruye_complejo(complex_t* c)
 
 void imprime_complejo(complex_t* c)
 {
-	printf(" %3.1lf + %3.1lfi “, c->r_, c->i_);
+	printf(" %3.1lf + %3.1lfi", c->r_, c->i_);
 }
 
 void set_real(complex_t* c, double r)
@@ -105,21 +105,21 @@ int main(void)
 	inicializa_complejo(&d);
 
 	imprime_complejo(&a);
-	printf(“\n”);
+	printf("\n");
 	imprime_complejo(&b);
-	printf(“\n”)
+	printf("\n")
 	imprime_complejo(&c);
-	printf(“\n”)
+	printf("\n")
 	imprime_complejo(&d);
-	printf(“\n”)
-	printf(“\n”)
+	printf("\n")
+	printf("\n")
 	
-	printf(“Parte real      : %lf \n”, get_real(&a));
-	printf(“Parte imaginaria: %lf \n”, get_imag(&a));
-	printf(“Módulo          : %lf \n”, get_modulo(&a));
-	printf(“Fase            : %lf \n”, get_fase(&a));
+	printf("Parte real      : %lf \n", get_real(&a));
+	printf("Parte imaginaria: %lf \n", get_imag(&a));
+	printf("Módulo          : %lf \n", get_modulo(&a));
+	printf("Fase            : %lf \n", get_fase(&a));
 
-	printf("Cambiando número: “);	
+	printf("Cambiando número: ");	
 	imprime_complejo(&a); 
 
 	set_real(&a,5);
@@ -127,23 +127,23 @@ int main(void)
 	imprime_complejo(&a);
 	printf(“\n”);
 
-	printf(“Suma             : “);
+	printf("Suma             : ");
 	imprime_complejo(&a);
-	printf(“ + “);
+	printf(" + ");
 	imprime_complejo(&b);
-	printf(“ = “);
+	printf(" = ");
 	c = suma(a,b);
 	imprime_complejo(&c);
-	printf(“\n”);
+	printf("\n");
 
-	printf(“Producto         : “);
+	printf("Producto         : ");
 	imprime_complejo(&a);
-	printf(“ * “);
+	printf(" * ");
 	imprime_complejo(&b);
-	printf(“ = “);
+	printf(" = ");
 	d=  producto(&a, &b);
 	imprime_complejo(&d);
-	printf(“\n”);
+	printf("\n");
 
 	destruye_complejo(&a);
 	destruye_complejo(&b);
