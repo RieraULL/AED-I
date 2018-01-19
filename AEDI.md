@@ -6,7 +6,7 @@ Programación Orientada a Objetos (OOP)
 
 Una clase es una estructura que permite la descripción de las características (atributos) y comportamiento (métodos) de un conjunto de objetos. Las clases, al igual que muchos otros elementos de la OOP puede implementarse en casi cualquier lenguaje de programación. 
 
-El siguiente fragmento de [código](complex/complex_1.c) en lenguaje C persigue crear un nuevo tipo de dato denominado complex_t, que representa un número complejo y algunas de sus operaciones asociadas. El lenguaje C no es orientado a objetos, pero aún así hemos podido implementar esta característica de la OOP.
+El siguiente fragmento de [código](complex/complex_1.c) en lenguaje C persigue crear un nuevo tipo de dato denominado `complex_t`, que representa un número complejo y algunas de sus operaciones asociadas. El lenguaje C no es orientado a objetos, pero aún así hemos podido implementar esta característica de la OOP.
 
 ```c
 struct struct_complex_t {
