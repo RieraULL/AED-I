@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <math.h>
 
-
 struct struct_complex_t {
 
 	double r_;
@@ -9,7 +8,6 @@ struct struct_complex_t {
 };
 
 typedef struct struct_complex_t complex_t; 
-
 
 void inicializa_complejo(complex_t* c, double r, double i)
 {
@@ -64,7 +62,6 @@ double get_fase(complex_t* c)
 	return atan2(c->i_, c ->r_);	
 }
 
-
 complex_t suma(complex_t* c1,complex_t* c2)
 {
 	complex_t aux;
@@ -85,19 +82,14 @@ complex_t producto(complex_t* c1,complex_t* c2)
 	return aux;	
 }
 
-
 bool iguales(complex_t* c1,complex_t& c2)
 {
 	return (fabs(c1->r_ - c2->r_) < EPSILON) && (fabs(c1->i_ - c2->i_) < EPSILON);
 }
 
-
-
 int main(void)
-{
-	
+{	
 	complex_t a,b,c,d;
-
 	
 	inicializa_complejo(&a, 1, 2);
 	inicializa_complejo(&b, 2, 3);
@@ -150,4 +142,3 @@ int main(void)
 	destruye_complejo(&c);
 	destruye_complejo(&d);
 }
-
