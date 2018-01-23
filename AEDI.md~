@@ -57,7 +57,7 @@ complex_t suma(complex_t* c1,complex_t* c2)
 }
 ```
 
-Si estudiamos este [fragmento de código](complex/complex.c) podremos observar que persigue describir un nuevo tipo de dato para representar números complejos. Asimismo, se definen ciertas operaciones sobre números complejos. Tengamos en cuenta que las operaciones sobre números complejos sólo se llevarán a cabo sobre este tipo de dato, por lo que resulta natural aglutinarlas en torno a él. Además, se definen una serie de procedimientos que nos permiten acceder para manipular, o simplemente observar, el contenido de una variable que hayamos definido del tipo `complex_t`.
+Si estudiamos este [fragmento de código](complex/complex.c) podemos observar que 
 
 **Actividad**: compila y ejecuta el siguiente [fragmento de código](complex/complex.c). Observa el resultado.
 
