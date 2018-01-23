@@ -1,6 +1,6 @@
 # Programación Orientada a Objetos
 
-La [Programación Orientada a Objetos (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming) es un [paradigma de programación](https://en.wikipedia.org/wiki/Programming_paradigm) que responde a ciertas propiedades. Entre ellas está la [encapsulación](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)), [abstracción](https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming), y algunas otras que se abordarán más adelanta. 
+La [Programación Orientada a Objetos (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming) es un [paradigma de programación](https://en.wikipedia.org/wiki/Programming_paradigm) que responde a ciertas propiedades. Entre ellas está la [encapsulación](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)), [abstracción](https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)), y algunas otras que se abordarán más adelanta. 
 
 Con el fin de implementar estas propiedades algunos lenguajes de programación disponen de ciertos instrumentos que lo facilitan. Aunque estas propiedades también se pueden implementar sin hacer uso de un lenguaje de programación orientado a objetos.
 
