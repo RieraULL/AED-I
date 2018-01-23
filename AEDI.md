@@ -41,16 +41,6 @@ double get_imag(complex_t* c)
 	return c->i_;
 }
 
-double get_modulo(complex_t* c)
-{
-	return sqrt(c->r_ * c->r_ + c->i_ * c->i_);	
-}
-
-double get_fase(complex_t* c)
-{
-	return atan2(c->i_, c ->r_);	
-}
-
 complex_t suma(complex_t* c1,complex_t* c2)
 {
 	complex_t aux;
