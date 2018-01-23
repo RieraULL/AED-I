@@ -13,6 +13,8 @@ Una [clase](https://en.wikipedia.org/wiki/Class_(computer_programming)) es, en e
 
 El siguiente [fragmento de código](complex/complex.c) en lenguaje C persigue crear un nuevo tipo de dato denominado `complex_t`, que representa un número complejo y algunas de sus operaciones asociadas. El lenguaje C no es orientado a objetos, pero aún así hemos podido implementar esta característica de la OOP.
 
+El siguiente fragmento de [código](complex/complex_1.c) en lenguaje C persigue crear un nuevo tipo de dato denominado `complex_t`, que representa un número complejo y algunas de sus operaciones asociadas. El lenguaje C no es orientado a objetos, pero aún así hemos podido implementar esta característica de la OOP.
+
 ```c
 struct struct_complex_t {
 	double r_;
