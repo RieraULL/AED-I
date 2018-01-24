@@ -67,7 +67,7 @@ Si estudiamos este fragmento de [código](complex/complex.c) podremos observar q
 
 A continuación veamos cómo se implementa una clase similar en un lenguaje orientado a objetos como es el C++. Como habíamos indicado anteriormente, una clase define un tipo de datos. Las variables que son definidas con una clase se llaman *objetos*, aunque la nomenclatura en OOP (y en otras disciplinas) depende del autor.
 
-```
+```cpp
 class complex_t {
 private:
 	double r_;
@@ -109,7 +109,7 @@ Los *métodos* son las funciones que permiten alterar o extraer las característ
 
 Como se puede observar, el fragmento de código contiene la declaración de los *atributos* y *métodos* que formarán parte de esta clase. La implementación de los métodos se efectuará en este caso durante un estadío postrior. No obstante, vamos a adelantarnos y observar cómo podríamos utilizar este nuevo tipo de dato en un programa principal:
 
-```
+```cpp
 int main(void)
 {
 	complex_t a(1,2), b(2,3), c(3,4), d;
@@ -124,7 +124,7 @@ int main(void)
 	d.imprime_complejo(cout);
 	cout << endl;
 	cout << endl;
-	
+
 	/* a.r_ = 5; ERROR */
 }
 ```
