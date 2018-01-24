@@ -154,7 +154,7 @@ int main(void)
 
 	c = a + b; 
 
-	c << endl;
+	cout << c << endl;
 	cout << endl;
 
 	cout << "Producto        : "<< a << " * " << b << " = ";

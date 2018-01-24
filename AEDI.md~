@@ -1,6 +1,10 @@
 # Programación Orientada a Objetos
 
-La [Programación Orientada a Objetos (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming) es un [paradigma de programación](https://en.wikipedia.org/wiki/Programming_paradigm) que responde a ciertas propiedades. Entre ellas está la [encapsulación](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)), [abstracción](https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming), y algunas otras que se abordarán más adelanta. 
+La [Programación Orientada a Objetos (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming) es un [paradigma de programación](https://en.wikipedia.org/wiki/Programming_paradigm) que responde a propiedades como la [abstracción](https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)), la [encapsulación](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)), y otras que se abordarán más adelante. 
+
+La abstracción persigue separar el *uso* de un tipo de dato de su *implementación*. Por ejemplo, supongamos que tenemos un tipo de dato que almacena una [imagen digital](https://en.wikipedia.org/wiki/Digital_image); podremos hacer usos de procedimientos que nos permitan visualizar la imagen, rotarla, hacer zoom en alguna zona. El usuario de ese tipo de dato es ajeno a que una imagen se [representa internamente](https://en.wikipedia.org/wiki/Raster_graphics) como una matriz de puntos, donde cada punto corresponde a tres números para la codificación [RGB](https://en.wikipedia.org/wiki/RGB_color_model)
+
+Para poder implementar la abstracción los lenguajes orientados a objetos hacen uso de la encapsulación y la *ocultación de información*. Esto es, de mecanismos del lenguaje que permiten especificar qué aspectos de un tipo de dato son visibles al usuario y cuáles no.
 
 Con el fin de implementar estas propiedades algunos lenguajes de programación disponen de ciertos instrumentos que lo facilitan. Aunque estas propiedades también se pueden implementar sin hacer uso de un lenguaje de programación orientado a objetos.
 
@@ -11,9 +15,7 @@ Uno de los elementos fundamentales de la OOP son las clases.
 
 Una [clase](https://en.wikipedia.org/wiki/Class_(computer_programming)) es, en esencia, la definición de un tipo de dato complejo. En ocasiones se implementa como una estructura que permite la descripción de las características (atributos) y comportamiento (métodos) de un conjunto de objetos. Las clases, como habíamos mencionado anteriormente pueden implementarse en casi cualquier lenguaje de programación. 
 
-El siguiente [fragmento de código](complex/complex.c) en lenguaje C persigue crear un nuevo tipo de dato denominado `complex_t`, que representa un número complejo y algunas de sus operaciones asociadas. El lenguaje C no es orientado a objetos, pero aún así hemos podido implementar esta característica de la OOP.
-
-El siguiente fragmento de [código](complex/complex_1.c) en lenguaje C persigue crear un nuevo tipo de dato denominado `complex_t`, que representa un número complejo y algunas de sus operaciones asociadas. El lenguaje C no es orientado a objetos, pero aún así hemos podido implementar esta característica de la OOP.
+El siguiente fragmento de [código](complex/complex_1.c) en lenguaje C persigue crear un nuevo tipo de dato denominado `complex_t`, que representa un número complejo y algunas de sus operaciones asociadas. El lenguaje C no es orientado a objetos, pero aún así hemos podido implementar esta característica de la OOP. A continuación se recoge un extracto.
 
 ```c
 struct struct_complex_t {
