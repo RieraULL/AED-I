@@ -97,17 +97,23 @@ Este fragmento de [código](complex.cpp) corresponde con una descripción de un 
 El cuerpo de una clase puede contener distintos tipos de elementos: 
 
 - claúsulas 
-- atributos  
+- atributos
 - y métodos
 
 Con el fin de delimitar aquellos elementos de la clase ajenos al usuario, y aquellos otros que podrá invocar el usuario se utiliza las *claúsulas* `private:` y `public:` respectivamente. De esta manera, el usuario que utilice este tipo de dato (`complex_t`) no podrá acceder a los elementos `r`_ e `i_`, pero sí a los procedimientos que se definen a continuación de la claúsula `public:`.
 
 
-Las características de una clase (y por tanto de los objetos definidos mediante esa clase) vienen descritas por los *atributos*. Estos consisten en una secuencia de identificadores precedidos por un tipo de dato. En nuestro ejemplo es el caso de `r_`  e `i_`.
+Las características de una clase (y por tanto de los objetos definidos mediante el tipo de dato que representa esa clase) vienen descritas por los *atributos*. Estos consisten en una secuencia de identificadores precedidos por un tipo de dato. En nuestro ejemplo los atributos son los identificadores `r_`  e `i_`, que representarán la parte real e imaginaria, respectivamente, de un número complejo. Nótese que en este caso los identificadores acaban con el símbolo guión bajo `_`: se trata de un convenio que persigue el diseño un código fuente más claro, diferenciando las variables ordinarias de los atributos de una clase meidante este símbolo. Algunos autores prefieren utilizar este símbolo simultáneamente como prefijo y sufijo de los identificadores de los atributos, o incluso únicamente como prefijo. En estas notas optaremos por seguir el convenio adelantado en el fragmento de código anterior.
 
-Los *métodos* son las funciones que permiten alterar o extraer las características de un objeto. Los valors concretos de los parámetros que pasamos a un método se denominan mensajes. Existen familias de métodos especiales como son los *constructores* y el *destructor*. Los constructores son una familia de procedimientos que permiten incializar el objeto durante su definición. Se caracterizan porque se denominan igual que nombre de la clase.
+Los *métodos* son las funciones que permiten alterar o extraer las características de un objeto. Los valors concretos de los parámetros que pasamos a un método se denominan [*mensajes*](https://en.wikipedia.org/wiki/Message_passing). En el fragmento de código anterior se observa que se declaran ciertos procedimientos para modificar el valor de algún atributo (aquellos cuyo nombre contiene el prefijo `set_`), y funciones para leer las características del objeto (aquellas funciones cuyo nombre contiene el prefijo `get_`). Aunque preceder el nombre de este tipo de métodos (métodos de acceso a los atributos) por los prefijos `set_` y `get_` no es en absoluto obligatorio, está bastante extendido su uso. 
 
-Como se puede observar, el fragmento de código contiene la declaración de los *atributos* y *métodos* que formarán parte de esta clase. La implementación de los métodos se efectuará en este caso durante un estadío postrior. No obstante, vamos a adelantarnos y observar cómo podríamos utilizar este nuevo tipo de dato en un programa principal:
+Puede darse el caso de que un método admita varios tipos de mensaje. Esto se debe a una de las propiedades de la OOP que se había mencionado anteriormente: *sobrecarga de funciones*. A efectos de implementación esto supone que dos métodos diferentes pueden tener la misma denominación, pero han de requerir distinto número y/o tipo de parámetros.
+
+Observamos también que los cuatro últimos métodos declarados en el fragmento de código anterior acaban con la palabra reservada `const`. Esta palabra reservada se utilia para identificar aquellos métodos que no modificarán las características de un objeto, es decir, que no nodificarán los atributos. Así, estos métodos suelen utilizarse para leer  los contenidos de los atributos, y no para modificarlos.
+
+Existen familias de métodos especiales. Es el caso de los *constructores* y del *destructor*. Los constructores son una familia de métodos que permiten incializar un objeto durante su declaración. Se caracterizan porque se denominan igual que el nombre de la clase. En el fragmento de código anterior, gracias a la sobrecarga de funciones, se definen dos constructores. El primer constructor requiere de dos parámetros, mientras que el segundo no requiere parámetro alguno. Los constructores que no requieren parámetros se denominan constructores por defecto.
+
+El fragmento de código anterior contiene únicamente la declaración de los *atributos* y *métodos* que formarán parte de esta clase (`complex_t`). La implementación de los métodos, es decir, la definición de las acciones que llevarán a cabo, se efectuará en este caso durante un estadío posterior. No obstante, vamos a adelantarnos y observar cómo podríamos utilizar este nuevo tipo de dato en un programa principal:
 
 ```cpp
 int main(void)
