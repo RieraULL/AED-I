@@ -119,7 +119,7 @@ bool operator==(complex_t& c1,complex_t& c2)
 
 int main(void)
 {
-	complex_t a(1,2), b(2,3), c(3,4), d;
+	complex_t a(1, 2), b(2, 3), c(3, 4), d;
 
 	cout << endl;
 	a.imprime_complejo(cout);

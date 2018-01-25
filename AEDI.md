@@ -1,4 +1,4 @@
-# Programación Orientada a Objetos
+# Programación Orientada a Objetos I
 
 La [Programación Orientada a Objetos (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming) es un [paradigma de programación](https://en.wikipedia.org/wiki/Programming_paradigm) que responde a propiedades como la [*abstracción*](https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)), la [*encapsulación*](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)), [*sobrecarga de funciones*](https://en.wikipedia.org/wiki/Function_overloading), y otras que se abordarán más adelante. 
 
@@ -173,11 +173,14 @@ complex_t::~complex_t(void)
 
 La implementación del primer constructor inicializa la parte real y la parte imaginaria de un objeto definido con el tipo `complex_t` con el mensaje pasado a través de los parámetros `r`e `i`, respectivamente. Sin embargo, el constructor por defecto, inicializa los atributos con el valor `0`.  Finalmente, el destructor muestra por pantalla un texto de despedida.
 
+### Declaración de objetos
+
+El siguiente fragmento de código recoge la declaración de varios objetos, y la invocación de métodos por parte de dichos objetos.
 
 ```cpp
 int main(void)
 {
-	complex_t a(1,2), b(2,3), c(3,4), d;
+	complex_t a(1, 2), b(2, 3), c(3, 4), d;
 
 	cout << endl;
 	a.imprime_complejo(cout);
@@ -194,11 +197,15 @@ int main(void)
 }
 ```
 
-Se puede observar en la primera declaración cómo se declaran las variables `a`, `b`, `c`  y `d`. Es esta misma línea también observamos dos tipos de declaraciones: 
+La primera declaración declara las objetos `a`, `b`, `c`  y `d`. Observamos dos tipos de declaraciones: 
 
- - declaraciones con parámetros `a(1,2), b(2,3), c(3,4)`
- - declaraciones sin parámetros  `d`
+ 1. declaraciones con parámetros `a(1, 2), b(2, 3), c(3, 4)`
+ 2. declaraciones sin parámetros  `d`
  
-Este detalle nos permite introducir el concepto de *constructor*. Los constructores son procedimientos  
+En el primer caso los objetos invocan al constructor que requiere dos parámetros. Así el objeto `a` se inicializa con el mensaje `2, 3`, que hará que el constructor inicialice los atributos correspondientes al este objeto con el valor `1`y `2` para la parte real e imaginaria, respectivamente.
 
-[paso de mensajes](https://en.wikipedia.org/wiki/Message_passing)
+Sin embargo, el segundo caso, se refiere al objeto `d`, que es declarado sin pasarle ningún tipo de mensaje. En este caso, la declaración del objeto invocará al constructor por defecto, e inicializará el objeto con los valores `0`y `0`, para la parte real e imaginaria, respectivamente. 
+
+
+
+
