@@ -211,11 +211,20 @@ int main(void)
 	cout << endl;
 	cout << endl;
 
+	cout << "Parte real      : "<< a.get_real()<< std::endl;
+	cout << "Parte imaginaria: "<< a.get_imag()<< std::endl;
+	cout << "Módulo          : "<< a.get_modulo()<< std::endl;
+	cout << "Fase            : "<< a.get_fase()<<std::endl;
+	cout << endl;
+
 	/* a.r_ = 5; ERROR */
 ```
 
-Como se puede observar, cada uno de los objetos invoca al método `imprime_complejo` con el mensaje `cout` (un flujo de salida). La última de las lineas recoge un acceso erróneo al atributo `r_` del objeto `a`. ¿Sabrías por qué?  
+Como se puede observar, cada uno de los objetos invoca al método `imprime_complejo` en el primer bloque de código con el mensaje `cout` (un flujo de salida) ¿Sabrías adivinar qué se mostrará por pantalla?. 
 
+En el segundo bloque de código el objeto `a` invoca los métodos `get_real`, `get_imag`, `get_modulo` y `get_fase`. ¿Qué aparecerá en pantalla?
+
+La última de las lineas recoge un acceso erróneo al atributo `r_` del objeto `a`. ¿Sabrías por qué? 
 
 
 
