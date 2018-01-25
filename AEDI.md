@@ -65,6 +65,8 @@ Si estudiamos este fragmento de [código](complex/complex.c) podremos observar q
 
 **Actividad**: compila y ejecuta el siguiente [fragmento de código](complex/complex.c). Observa el resultado y razona la ejecución.
 
+### Declaración de una clase
+
 A continuación, veamos cómo se implementa una clase similar en un lenguaje orientado a objetos como es el C++. Como habíamos indicado anteriormente, una clase define un tipo de datos. Las variables que son definidas con una clase se llaman *objetos*, aunque la nomenclatura en OOP (y en otras disciplinas) depende del autor.
 
 ```cpp
@@ -117,6 +119,36 @@ El destructor es un único método que tiene como propósito efectuar todas aque
 
 El fragmento de código anterior contiene únicamente la declaración de los *atributos* y *métodos* que formarán parte de esta clase (`complex_t`). La implementación de los métodos, es decir, la definición de las acciones que llevarán a cabo, se efectuará en este caso durante un estadío posterior. 
 
+### Implementación de una clase
+
+Una vez hecha la declaración de los atributos y métodos, corresponde describir la **implementación de los métodos**, es decir, especificar qué operaciones lleva a cabo cada método. Esta implementación puede especificarse de diversas maneras. Una de ellas podría consistir en llevarla a cabo dentro de la propia declaración del método. Otra de las manera podría ser especificarla después de la definición de la clase, en un fichero aparte, o en el mismo fichero.
+
+Veamos un ejemplo de este segundo caso. 
+
+```cpp
+void complex_t::set_real(double r)
+{
+	r_=r;
+}
+
+void complex_t::set_imag(double i)
+{
+	i_=i;
+}
+
+double complex_t::get_real(void) const
+{
+	return r_;
+}
+
+double complex_t::get_imag(void) const
+{
+	return i_;
+}
+```
+Cuando la implementación se especifica fuera de la propia clase la implementación de los métodos se lleva a cabo tal y como se suele especificar un procedimiento ordinario en lenguaje C, aunque el nombre del método debe ir precedido del nombre de la clase a la que pertenece, y separado por los símbolos `::`. En este ejemplo, los métodos `set_real` y `set_imag` modifican la parte real e imaginaria de un objeto declarado con el tipo `complex_t`, respectivamente. Por otro lado, los métodos `get_real` y `get_imag` devuelven, respectivamente, los valores de la parte real e imaginaria de los objetos que los invocan. Recuérdese que el sufijo `const` después del nombre del método hace referencia a que dicho método no modificará el contenido del objeto.
+
+
 A continuación se muestra el fragmento de código correspondiente a la implementación de los dos constructores y del destructor.
 
 ```cpp
@@ -139,7 +171,7 @@ complex_t::~complex_t(void)
 
 ```
 
-La implementación del primer constructor inicializa la parte real y la parte imaginaria de un objeto definido con el tipo `complex_t` con el mensaje pasado a través de los parámetros `r`e `i`, respectivamente. Sin embargo, el constructor por defecto, inicializa los atributos con el valor `0`.  Finalmente, el destructor muestra por pantalla un texto de despedida.  
+La implementación del primer constructor inicializa la parte real y la parte imaginaria de un objeto definido con el tipo `complex_t` con el mensaje pasado a través de los parámetros `r`e `i`, respectivamente. Sin embargo, el constructor por defecto, inicializa los atributos con el valor `0`.  Finalmente, el destructor muestra por pantalla un texto de despedida.
 
 
 ```cpp
