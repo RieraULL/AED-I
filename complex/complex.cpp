@@ -163,5 +163,7 @@ int main(void)
 
 	cout << d << endl;
 	cout << endl;
+
+	return 0
 }
 
