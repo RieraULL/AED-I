@@ -1,10 +1,10 @@
 # Programación Orientada a Objetos
 
-La [Programación Orientada a Objetos (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming) es un [paradigma de programación](https://en.wikipedia.org/wiki/Programming_paradigm) que responde a propiedades como la [abstracción](https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)), la [encapsulación](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)), [sobrecarga de funciones](https://en.wikipedia.org/wiki/Function_overloading), y otras que se abordarán más adelante. 
+La [Programación Orientada a Objetos (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming) es un [paradigma de programación](https://en.wikipedia.org/wiki/Programming_paradigm) que responde a propiedades como la [*abstracción*](https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)), la [*encapsulación*](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)), [*sobrecarga de funciones*](https://en.wikipedia.org/wiki/Function_overloading), y otras que se abordarán más adelante. 
 
-La abstracción persigue separar el *uso* de un tipo de dato de su *implementación*. Por ejemplo, supongamos que tenemos un tipo de dato que almacena una [imagen digital](https://en.wikipedia.org/wiki/Digital_image); podremos hacer usos de procedimientos que nos permitan visualizar la imagen, rotarla, hacer zoom en alguna zona. El usuario de ese tipo de dato es ajeno a que una imagen se [representa internamente](https://en.wikipedia.org/wiki/Raster_graphics) como una matriz de puntos, donde cada punto corresponde a tres números para la codificación [RGB](https://en.wikipedia.org/wiki/RGB_color_model)
+La **abstracción** persigue separar el *uso* de un tipo de dato de su *implementación*. Por ejemplo, supongamos que tenemos un tipo de dato que almacena una [imagen digital](https://en.wikipedia.org/wiki/Digital_image); podremos hacer usos de procedimientos que nos permitan visualizar la imagen, rotarla, hacer zoom en alguna zona. El usuario de ese tipo de dato es ajeno a que una imagen se [representa internamente](https://en.wikipedia.org/wiki/Raster_graphics) como una matriz de puntos, donde cada punto corresponde a tres números para la codificación [RGB](https://en.wikipedia.org/wiki/RGB_color_model)
 
-Para poder implementar la abstracción los lenguajes orientados a objetos hacen uso de la encapsulación y la *ocultación de información*. Esto es, de mecanismos del lenguaje que permiten especificar qué aspectos de un tipo de dato son visibles al usuario y cuáles no.
+Para poder implementar la abstracción los lenguajes orientados a objetos hacen uso de la **encapsulación** y la *ocultación de información*. Esto es, de mecanismos del lenguaje que permiten especificar qué aspectos de un tipo de dato son visibles al usuario y cuáles no.
 
 Si bien algunos lenguajes de programación disponen de ciertos instrumentos que facilitan la implementación de estas propiedades, no es necesario hacer uso de un lenguaje de programación orientado a objetos para poder utilizarlas.
 
@@ -13,7 +13,7 @@ Uno de los elementos fundamentales de la OOP son las clases.
 
 ## Clases
 
-Una [clase](https://en.wikipedia.org/wiki/Class_(computer_programming)) es, en esencia, la definición de un tipo de dato complejo. En ocasiones se implementa como una estructura que permite la descripción de las características (atributos) y comportamiento (métodos) de un conjunto de objetos. Las clases, como habíamos mencionado anteriormente pueden implementarse en casi cualquier lenguaje de programación.
+Una [*clase*](https://en.wikipedia.org/wiki/Class_(computer_programming)) es, en esencia, la definición de un tipo de dato complejo. En ocasiones se implementa como una estructura que permite la descripción de las características (atributos) y comportamiento (métodos) de un conjunto de objetos. Las clases, como habíamos mencionado anteriormente pueden implementarse en casi cualquier lenguaje de programación.
 
 El siguiente fragmento de [código](complex/complex_1.c) en lenguaje C persigue crear un nuevo tipo de dato denominado `complex_t`, que representa un número complejo y algunas de sus operaciones asociadas. El lenguaje C no es orientado a objetos, pero aún así hemos podido implementar esta característica de la OOP. A continuación se recoge un extracto.
 
@@ -65,7 +65,7 @@ Si estudiamos este fragmento de [código](complex/complex.c) podremos observar q
 
 **Actividad**: compila y ejecuta el siguiente [fragmento de código](complex/complex.c). Observa el resultado y razona la ejecución.
 
-A continuación veamos cómo se implementa una clase similar en un lenguaje orientado a objetos como es el C++. Como habíamos indicado anteriormente, una clase define un tipo de datos. Las variables que son definidas con una clase se llaman *objetos*, aunque la nomenclatura en OOP (y en otras disciplinas) depende del autor.
+A continuación, veamos cómo se implementa una clase similar en un lenguaje orientado a objetos como es el C++. Como habíamos indicado anteriormente, una clase define un tipo de datos. Las variables que son definidas con una clase se llaman *objetos*, aunque la nomenclatura en OOP (y en otras disciplinas) depende del autor.
 
 ```cpp
 class complex_t {
@@ -100,20 +100,47 @@ El cuerpo de una clase puede contener distintos tipos de elementos:
 - atributos
 - y métodos
 
-Con el fin de delimitar aquellos elementos de la clase ajenos al usuario, y aquellos otros que podrá invocar el usuario se utiliza las *claúsulas* `private:` y `public:` respectivamente. De esta manera, el usuario que utilice este tipo de dato (`complex_t`) no podrá acceder a los elementos `r`_ e `i_`, pero sí a los procedimientos que se definen a continuación de la claúsula `public:`.
+Con el fin de delimitar aquellos elementos de la clase ajenos al usuario, y aquellos otros que, sin embargo, podrá invocar el usuario se utiliza las **claúsulas** `private:` y `public:` respectivamente. De esta manera, el usuario que utilice este tipo de dato (`complex_t`) no podrá acceder a los elementos `r`_ e `i_`, pero sí a los procedimientos que se definen a continuación de la claúsula `public:`.
 
 
-Las características de una clase (y por tanto de los objetos definidos mediante el tipo de dato que representa esa clase) vienen descritas por los *atributos*. Estos consisten en una secuencia de identificadores precedidos por un tipo de dato. En nuestro ejemplo los atributos son los identificadores `r_`  e `i_`, que representarán la parte real e imaginaria, respectivamente, de un número complejo. Nótese que en este caso los identificadores acaban con el símbolo guión bajo `_`: se trata de un convenio que persigue el diseño un código fuente más claro, diferenciando las variables ordinarias de los atributos de una clase meidante este símbolo. Algunos autores prefieren utilizar este símbolo simultáneamente como prefijo y sufijo de los identificadores de los atributos, o incluso únicamente como prefijo. En estas notas optaremos por seguir el convenio adelantado en el fragmento de código anterior.
+Las características de una clase (y por tanto de los objetos definidos mediante el tipo de dato que representa esa clase) vienen descritas por los **atributos**. Estos consisten en una secuencia de identificadores precedidos por un tipo de dato. En nuestro ejemplo los atributos son los identificadores `r_`  e `i_`, que representarán la parte real e imaginaria, respectivamente, de un número complejo. Nótese que en este caso los identificadores acaban con el símbolo guión bajo `_`: se trata de un convenio que persigue el diseño un código fuente más claro, diferenciando las variables ordinarias de los atributos de una clase meidante este símbolo. Algunos autores prefieren utilizar este símbolo simultáneamente como prefijo y sufijo de los identificadores de los atributos, o incluso únicamente como prefijo. En estas notas optaremos por seguir el convenio adelantado en el fragmento de código anterior.
 
-Los *métodos* son las funciones que permiten alterar o extraer las características de un objeto. Los valors concretos de los parámetros que pasamos a un método se denominan [*mensajes*](https://en.wikipedia.org/wiki/Message_passing). En el fragmento de código anterior se observa que se declaran ciertos procedimientos para modificar el valor de algún atributo (aquellos cuyo nombre contiene el prefijo `set_`), y funciones para leer las características del objeto (aquellas funciones cuyo nombre contiene el prefijo `get_`). Aunque preceder el nombre de este tipo de métodos (métodos de acceso a los atributos) por los prefijos `set_` y `get_` no es en absoluto obligatorio, está bastante extendido su uso. 
+Los **métodos** son las funciones que permiten alterar o extraer las características de un objeto. Los valores concretos de los parámetros que pasamos a un método se denominan [*mensajes*](https://en.wikipedia.org/wiki/Message_passing). En el fragmento de código anterior se observa que se declaran ciertos procedimientos para modificar el valor de algún atributo (aquellos cuyo nombre contiene el prefijo `set_`), y funciones para leer las características del objeto (aquellas funciones cuyo nombre contiene el prefijo `get_`). Aunque preceder el nombre de este tipo de métodos (métodos de acceso a los atributos) por los prefijos `set_` y `get_` no es en absoluto obligatorio, está bastante extendido su uso. 
 
-Puede darse el caso de que un método admita varios tipos de mensaje. Esto se debe a una de las propiedades de la OOP que se había mencionado anteriormente: *sobrecarga de funciones*. A efectos de implementación esto supone que dos métodos diferentes pueden tener la misma denominación, pero han de requerir distinto número y/o tipo de parámetros.
+Puede darse el caso de que un método admita varios tipos de mensaje. Esto se debe a una de las propiedades de la OOP que se había mencionado anteriormente: **sobrecarga de funciones**. A efectos de implementación esto supone que dos métodos diferentes pueden tener la misma denominación, pero han de requerir distinto número y/o tipo de parámetros.
 
 Observamos también que los cuatro últimos métodos declarados en el fragmento de código anterior acaban con la palabra reservada `const`. Esta palabra reservada se utilia para identificar aquellos métodos que no modificarán las características de un objeto, es decir, que no nodificarán los atributos. Así, estos métodos suelen utilizarse para leer  los contenidos de los atributos, y no para modificarlos.
 
-Existen familias de métodos especiales. Es el caso de los *constructores* y del *destructor*. Los constructores son una familia de métodos que permiten incializar un objeto durante su declaración. Se caracterizan porque se denominan igual que el nombre de la clase. En el fragmento de código anterior, gracias a la sobrecarga de funciones, se definen dos constructores. El primer constructor requiere de dos parámetros, mientras que el segundo no requiere parámetro alguno. Los constructores que no requieren parámetros se denominan constructores por defecto.
+Existen familias de métodos especiales. Es el caso de los **constructores** y del **destructor**. Los constructores son una familia de métodos que permiten incializar un objeto durante su declaración. Se caracterizan porque se denominan igual que el identificador de la clase. En el fragmento de código anterior, gracias a la sobrecarga de funciones, se definen dos constructores. El primer constructor requiere de dos parámetros, mientras que el segundo no requiere parámetro alguno. Los constructores que no requieren parámetros se denominan constructores por defecto.
 
-El fragmento de código anterior contiene únicamente la declaración de los *atributos* y *métodos* que formarán parte de esta clase (`complex_t`). La implementación de los métodos, es decir, la definición de las acciones que llevarán a cabo, se efectuará en este caso durante un estadío posterior. No obstante, vamos a adelantarnos y observar cómo podríamos utilizar este nuevo tipo de dato en un programa principal:
+El destructor es un único método que tiene como propósito efectuar todas aquellas tareas requeridas después de que un objeto de esa clase deje de existir. Este tipo de métodos suele estar relacionado con la memoria dinámica. En ocasiones hay objetos que durante su construcción requieren de la reserva de memoria dinámica, así que el destructor llevaría a cabo las tareas de liberación de esta memoria cuando el objeto, al dejar de exisitir, no necesite esa memoria reservada.
+
+El fragmento de código anterior contiene únicamente la declaración de los *atributos* y *métodos* que formarán parte de esta clase (`complex_t`). La implementación de los métodos, es decir, la definición de las acciones que llevarán a cabo, se efectuará en este caso durante un estadío posterior. 
+
+A continuación se muestra el fragmento de código correspondiente a la implementación de los dos constructores y del destructor.
+
+```cpp
+complex_t::complex_t(double r,double i)
+{
+	r_=r;
+	i_=i;
+}
+
+complex_t::complex_t(void)
+{
+	r_=0;
+	i_=0;
+}
+
+complex_t::~complex_t(void)
+{
+	cout << "-- Bye, bye, complex! --" << endl;
+}
+
+```
+
+La implementación del primer constructor inicializa la parte real y la parte imaginaria de un objeto definido con el tipo `complex_t` con el mensaje pasado a través de los parámetros `r`e `i`, respectivamente. Sin embargo, el constructor por defecto, inicializa los atributos con el valor `0`.  Finalmente, el destructor muestra por pantalla un texto de despedida.  
+
 
 ```cpp
 int main(void)
