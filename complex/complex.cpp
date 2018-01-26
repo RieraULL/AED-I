@@ -20,13 +20,14 @@ public:
 	void write_cartesian(ostream& os) const;
 	void write_polar(ostream& os) const;
 
-	void set(double r, double i);
-
 	void set_real(double r);
 	void set_imag(double i);
 	
 	double get_real(void) const;
 	double get_imag(void) const;
+
+	void get(complex_t& c) const;
+	void set(const complex_t& c);
 
 private:
 
@@ -74,20 +75,21 @@ void complex_t::write_polar(ostream& os) const
 	os << ")";
 }
 
-void complex_t::set(double r, double i)
+void complex_t::get(complex_t& c) const
 {
-	r_=r;
-	i_=i;
+	c.r_ = r_;
+	c.i_ = i_;
 }
 
-void complex_t::set_real(double r)
+void complex_t::set(const complex_t& c)
 {
-	r_=r;
+	r_ = c.r_;
+	i_ = c.i_;
 }
 
 void complex_t::set_imag(double i)
 {
-	i_=i;
+	i_ = i;
 }
 
 double complex_t::get_real(void) const
@@ -110,14 +112,14 @@ double complex_t::get_phase(void) const
 	return atan2(i_, r_);	
 }
 
-ostream& operator<<(ostream& os, complex_t& c)
+ostream& operator<<(ostream& os, const complex_t& c)
 {
 	c.write_cartesian(os);
 	return os;
 }
 
 
-complex_t operator+(complex_t& c1,complex_t& c2)  
+complex_t operator+(const complex_t& c1, const complex_t& c2)  
 {
 	complex_t aux;
 
@@ -127,7 +129,7 @@ complex_t operator+(complex_t& c1,complex_t& c2)
 	return aux;
 }
 
-complex_t operator*(complex_t& c1,complex_t& c2) 
+complex_t operator*(const complex_t& c1,const complex_t& c2) 
 {
 	complex_t aux;
 
@@ -138,7 +140,7 @@ complex_t operator*(complex_t& c1,complex_t& c2)
 }
 
 
-bool operator==(complex_t& c1,complex_t& c2)  
+bool operator==(const complex_t& c1,const complex_t& c2)  
 {
 	return (c1.get_real() == c2.get_real()) && (c1.get_imag() == c2.get_imag());
 }
@@ -226,8 +228,30 @@ int main(void)
 	delete cp;
 	cp = NULL;		
 
+
+	complex_t &ar(a), &br = a;
+	const complex_t &cr = a;
+
+	cout << endl;
+	ar.write_cartesian(cout);
+	cout << endl;
+
+	ar.set_real(25);
+
+	ar.write_cartesian(cout);
+	cout << endl;
+
+	br.set_real(2);
+	a.write_cartesian(cout);
+	cout << endl;
+	
+	cr.write_cartesian(cout);
+	cout << endl;	
+
+	/* cr.set_real(5);  ERROR */
+
 	cout << "Cambiando número: " << a; 
-	a.set(5,0);
+	a.set(c);
         //a.r_=5;               // ERROR!!!!!!!!!!!!!!!!!!!!!!!!!!
 	cout << " a "<< a << endl;
 	cout << endl;

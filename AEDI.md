@@ -71,9 +71,7 @@ A continuación, veamos cómo se implementa una clase similar en un lenguaje ori
 
 ```cpp
 class complex_t {
-
 private:
-
 	double r_;
 	double i_;
 
@@ -87,13 +85,14 @@ public:
 	void write_cartesian(ostream& os) const;
 	void write_polar(ostream& os) const;
 
-	void set(double r, double i);
-
 	void set_real(double r);
 	void set_imag(double i);
 	
 	double get_real(void) const;
 	double get_imag(void) const;
+
+	void get(complex_t& c) const;
+	void set(const complex_t& c);
 
 private:
 
@@ -286,7 +285,8 @@ Vemos entre comentarios una método que tiene como propósito actualizar el obje
 ### Declaración de objetos dinámicos
 En ocasiones debemos crear y destruir objetos de forma dinámica. En el siguiente ejemplo se declara cuatro punteros a objetos de tipo complex_t. El puntero `ap` se inicializa con la dirección del objeto `a`; el puntero `bp` se inicializa con la memoria reservada para un objeto dinámico que ha sido inicializado con el constructor al que se le pasa el mensaje `(6, 6)`; el puntero `cp` también se inicializa con un objeto dinámico creado a partir del constructor de copia inicializado con el objeto `b`, y finalmente, el puntero `dp` se inicializa con el puntero nulo. 
 ```cpp
-
+int main(void)
+{
 	complex_t a(1, 2), b(3, 4);
 
 	complex_t *ap, *bp, *cp, *dp;
@@ -306,13 +306,103 @@ En ocasiones debemos crear y destruir objetos de forma dinámica. En el siguient
 	/* dp->write_cartesian(cout);  ERROR */
 	cout << endl;
 
-    ap = NULL;
+	ap = NULL;
 
 	delete bp;
 	bp = NULL;
 
 	delete cp;
 	cp = NULL;	
+
+	return 0;
+}
 ```
 Téngase en cuenta que una vez que no se requiere el uso de alguna zona de memoria reservada dinámicamente, hay que proceder a su liberación. Así, la memoria apuntada dinámicamente por los puntero `bp` y `cp` debe ser liberada mediante `delete`. Por precaución, una vez que dejemos de utilizar un puntero, debemos asignarle el valor `NULL`.
+
+### Declaración de referencias y referencias constantes
+Las referencias y referencias constantes son ingredientes del lenguaje C++ que permiten declarar alias de objetos. Las referencias permiten actuar sobre el objeto tal y como si fuera el objeto original, mientras que las referencias constantes no permiten la modificación del objeto.
+```cpp
+int main(void)
+{
+	complex_t a(1, 2);
+	complex_t &ar(a), &br = a;
+	const complex_t &cr = a;
+
+	ar.write_cartesian(cout);
+	cout << endl;
+
+	ar.set_real(25);
+
+	ar.write_cartesian(cout);
+	cout << endl;
+
+	br.set_real(2);
+	a.write_cartesian(cout);
+	cout << endl;
+
+	return 0;
+}
+```
+En este ejemplo definimos las referencas `ar` y `br` a partir del objeto `a`. También la referencia `cr` se declara a partir del objeto `a`, aunque en este caso es una referencia constante. Observa el contenido de las referncias y del objeto `a`a medida que avanza la ejecución del programa.
+
+### Paso de parámetros por valor y por referencia
+El paso de objetos a alguna función o método se suele efectuar mediante una *referencia constante* o una *referencia* al objeto. En caso de que simplemente queramos pasar un objeto por *valor*, el cauce habitual es el uso de una referencia constante al parámetro. Esto se debe a que los objetos suelen ser estructuras complejas que pueden albergar gran cantidad de datos (por ejemplo, una matriz), así que, en caso de no utilizar una referencia constante, estaríamos enviando una copia completa de nuestro objeto al método que lo require. Sin embargo, si utilizamos una referencia constante, estaremos enviando únicamente la dirección que tiene dicho objeto en memoria, lo cual puede implicar una diferencia sustancial en memoria y eficienia.
+En caso de que deseemos alterar el contenido del parámetro dentro del método debemos pasarlo por referencia.
+```cpp
+class complex_t {
+private:
+	double r_;
+	double i_;
+
+public:
+
+	complex_t(double r,double i);
+	complex_t(void);
+
+	~complex_t(void);
+	
+	void write_cartesian(ostream& os) const;
+	void write_polar(ostream& os) const;
+
+	void set_real(double r);
+	void set_imag(double i);
+	
+	double get_real(void) const;
+	double get_imag(void) const;
+
+	void get(complex_t& c) const;
+	void set(const complex_t& c);
+
+private:
+
+	double get_mod(void) const;
+	double get_phase(void) const;
+};
+
+
+void complex_t::get(complex_t& c) const
+{
+	c.r_ = r_;
+	c.i_ = i_;
+}
+
+void complex_t::set(const complex_t& c)
+{
+	r_ = c.r_;
+	i_ = c.i_;
+}
+
+int main(void)
+{
+	complex_t a(1, 2), b, c;
+
+	b.set(a);
+	b.get(c);
+
+	a.write_cartesian(cout); cout << endl;
+	b.write_cartesian(cout); cout << endl;
+	c.write_cartesian(cout); cout << endl;
+}
+
+```
 
