@@ -119,7 +119,7 @@ bool operator==(complex_t& c1,complex_t& c2)
 
 int main(void)
 {
-	complex_t a(1,2),b(2,3),c(3,4),d;
+	complex_t a(1, 2), b(2, 3), c(3, 4), d;
 
 	cout << endl;
 	a.imprime_complejo(cout);
@@ -144,6 +144,27 @@ int main(void)
 	cout << "Fase            : "<< a.get_fase()<<std::endl;
 	cout << endl;
 
+
+	const complex_t aa(a), bb(b), cc(c), dd(d);
+
+	cout << endl;
+	aa.imprime_complejo(cout);
+	cout << endl;
+	bb.imprime_complejo(cout);
+	cout << endl;
+	cc.imprime_complejo(cout);
+	cout << endl;
+	dd.imprime_complejo(cout);
+	cout << endl;
+	cout << endl;
+
+	cout << "Parte real      : "<< aa.get_real()<< std::endl;
+	cout << "Parte imaginaria: "<< aa.get_imag()<< std::endl;
+	cout << "Módulo          : "<< aa.get_modulo()<< std::endl;
+	cout << "Fase            : "<< aa.get_fase()<<std::endl;
+	cout << endl;
+
+
 	cout << "Cambiando número: " << a; 
 	a.set_real(5);
         //a.r_=5;               // ERROR!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -163,5 +184,7 @@ int main(void)
 
 	cout << d << endl;
 	cout << endl;
+
+	return 0;
 }
 

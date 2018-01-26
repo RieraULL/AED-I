@@ -1,4 +1,4 @@
-# Programación Orientada a Objetos I
+# Programación Orientada a Objetos en C++ I
 
 La [Programación Orientada a Objetos (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming) es un [paradigma de programación](https://en.wikipedia.org/wiki/Programming_paradigm) que responde a propiedades como la [*abstracción*](https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)), la [*encapsulación*](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)), [*sobrecarga de funciones*](https://en.wikipedia.org/wiki/Function_overloading), y otras que se abordarán más adelante. 
 
@@ -15,7 +15,7 @@ Uno de los elementos fundamentales de la OOP son las clases.
 
 Una [*clase*](https://en.wikipedia.org/wiki/Class_(computer_programming)) es, en esencia, la definición de un tipo de dato complejo. En ocasiones se implementa como una estructura que permite la descripción de las características (atributos) y comportamiento (métodos) de un conjunto de objetos. Las clases, como habíamos mencionado anteriormente pueden implementarse en casi cualquier lenguaje de programación.
 
-El siguiente fragmento de [código](complex/complex_1.c) en lenguaje C persigue crear un nuevo tipo de dato denominado `complex_t`, que representa un número complejo y algunas de sus operaciones asociadas. El lenguaje C no es orientado a objetos, pero aún así hemos podido implementar esta característica de la OOP. A continuación se recoge un extracto.
+El siguiente fragmento de [código](complex/complex_1.c) en lenguaje C persigue crear un nuevo tipo de dato denominado `complex_t`, que representa un [número complejo](https://es.wikipedia.org/wiki/N%C3%BAmero_complejo) y algunas de sus operaciones asociadas. El lenguaje C no es orientado a objetos, pero aún así hemos podido implementar esta característica de la OOP. A continuación se recoge un extracto.
 
 ```c
 struct struct_complex_t {
@@ -71,7 +71,9 @@ A continuación, veamos cómo se implementa una clase similar en un lenguaje ori
 
 ```cpp
 class complex_t {
+
 private:
+
 	double r_;
 	double i_;
 
@@ -81,20 +83,26 @@ public:
 	complex_t(void);
 
 	~complex_t(void);
+	
+	void write_cartesian(ostream& os) const;
+	void write_polar(ostream& os) const;
 
-	void imprime_complejo(ostream& os) const;
+	void set(double r, double i);
 
 	void set_real(double r);
 	void set_imag(double i);
+	
+	double get_real(void) const;
+	double get_imag(void) const;
 
-	double get_real(void)   const;
-	double get_imag(void)   const;
-	double get_modulo(void) const;
-	double get_fase(void)   const;
+private:
+
+	double get_mod(void) const;
+	double get_phase(void) const;
 };
 
 ```
-Este fragmento de [código](complex.cpp) corresponde con una descripción de un tipo de dato para representar un número complejo, similar al ejemplo anterior. La definición de una clase viene precedida por la palabra reservada `class` seguida del nombre de la clase. El cuerpo de la definición está delimitado por los símbolos `{` y `};`. Igual que en el caso anterior se definirá una estructura que representa un número complejo por sendos valores de tipo `double`, refiriéndose a la parte real y imaginaria mendiante `r_` e `i_`, respectivamente.
+Este fragmento de [código](complex.cpp) corresponde con una descripción de un tipo de dato para representar un [número complejo](https://es.wikipedia.org/wiki/N%C3%BAmero_complejo), similar al ejemplo anterior. La definición de una clase viene precedida por la palabra reservada `class` seguida del nombre de la clase. El cuerpo de la definición está delimitado por los símbolos `{` y `};`. Igual que en el caso anterior se definirá una estructura que representa un número complejo por sendos valores de tipo `double`, refiriéndose a la parte real y imaginaria mendiante `r_` e `i_`, respectivamente.
 
 El cuerpo de una clase puede contener distintos tipos de elementos: 
 
@@ -102,12 +110,12 @@ El cuerpo de una clase puede contener distintos tipos de elementos:
 - atributos
 - y métodos
 
-Con el fin de delimitar aquellos elementos de la clase ajenos al usuario, y aquellos otros que, sin embargo, podrá invocar el usuario se utiliza las **claúsulas** `private:` y `public:` respectivamente. De esta manera, el usuario que utilice este tipo de dato (`complex_t`) no podrá acceder a los elementos `r`_ e `i_`, pero sí a los procedimientos que se definen a continuación de la claúsula `public:`.
+Con el fin de delimitar aquellos elementos de la clase ajenos al usuario, y aquellos otros que, sin embargo, podrá invocar el usuario se utiliza las **claúsulas** `private:` y `public:` respectivamente. De esta manera, el usuario que utilice este tipo de dato (`complex_t`) no podrá acceder a los elementos `r`_ e `i_`, ni a las funciones `get_mod` o `get_phase`, pero sí a las funciones que se definen a continuación de la claúsula `public:`.
 
 
 Las características de una clase (y por tanto de los objetos definidos mediante el tipo de dato que representa esa clase) vienen descritas por los **atributos**. Estos consisten en una secuencia de identificadores precedidos por un tipo de dato. En nuestro ejemplo los atributos son los identificadores `r_`  e `i_`, que representarán la parte real e imaginaria, respectivamente, de un número complejo. Nótese que en este caso los identificadores acaban con el símbolo guión bajo `_`: se trata de un convenio que persigue el diseño un código fuente más claro, diferenciando las variables ordinarias de los atributos de una clase meidante este símbolo. Algunos autores prefieren utilizar este símbolo simultáneamente como prefijo y sufijo de los identificadores de los atributos, o incluso únicamente como prefijo. En estas notas optaremos por seguir el convenio adelantado en el fragmento de código anterior.
 
-Los **métodos** son las funciones que permiten alterar o extraer las características de un objeto. Los valores concretos de los parámetros que pasamos a un método se denominan [*mensajes*](https://en.wikipedia.org/wiki/Message_passing). En el fragmento de código anterior se observa que se declaran ciertos procedimientos para modificar el valor de algún atributo (aquellos cuyo nombre contiene el prefijo `set_`), y funciones para leer las características del objeto (aquellas funciones cuyo nombre contiene el prefijo `get_`). Aunque preceder el nombre de este tipo de métodos (métodos de acceso a los atributos) por los prefijos `set_` y `get_` no es en absoluto obligatorio, está bastante extendido su uso. 
+Los **métodos** son las funciones que permiten alterar o extraer las características de un objeto. Los valores concretos de los parámetros que pasamos a un método se denominan [*mensajes*](https://en.wikipedia.org/wiki/Message_passing). En el fragmento de código anterior se observa que se declaran ciertos procedimientos para modificar el valor de algún atributo (aquellos cuyo nombre contiene el prefijo `set_`), y funciones para leer las características del objeto (aquellas funciones cuyo nombre contiene el prefijo `get_`). Aunque preceder el nombre de este tipo de métodos (métodos de acceso a los atributos) por los prefijos `set_` y `get_` no es en absoluto obligatorio, está bastante extendido su uso. En ocasiones se declaran métodos privados, que serán utilizados como herramientas de otros métodos. Así, la única manera de *comunicarnos* con un objeto es a través de los métodos públicos. El conjunto de métodos públicos que nos permite modificar o leer el *estado* de un objeto se denomina **interfaz**.
 
 Puede darse el caso de que un método admita varios tipos de mensaje. Esto se debe a una de las propiedades de la OOP que se había mencionado anteriormente: **sobrecarga de funciones**. A efectos de implementación esto supone que dos métodos diferentes pueden tener la misma denominación, pero han de requerir distinto número y/o tipo de parámetros.
 
@@ -146,12 +154,13 @@ double complex_t::get_imag(void) const
 	return i_;
 }
 ```
-Cuando la implementación se especifica fuera de la propia clase la implementación de los métodos se lleva a cabo tal y como se suele especificar un procedimiento ordinario en lenguaje C, aunque el nombre del método debe ir precedido del nombre de la clase a la que pertenece, y separado por los símbolos `::`. En este ejemplo, los métodos `set_real` y `set_imag` modifican la parte real e imaginaria de un objeto declarado con el tipo `complex_t`, respectivamente. Por otro lado, los métodos `get_real` y `get_imag` devuelven, respectivamente, los valores de la parte real e imaginaria de los objetos que los invocan. Recuérdese que el sufijo `const` después del nombre del método hace referencia a que dicho método no modificará el contenido del objeto.
+Cuando la implementación se especifica fuera de la propia clase la implementación de los métodos se lleva a cabo tal y como se suele especificar un procedimiento ordinario en lenguaje C, aunque el nombre del método debe ir precedido del nombre de la clase a la que pertenece, y separado por los símbolos `::`. En este ejemplo, los métodos `set_real` y `set_imag` modifican la parte real e imaginaria de un objeto declarado con el tipo `complex_t`, respectivamente.  Recuérdese que el sufijo `const` después del nombre del método hace referencia a que dicho método no modificará el contenido del objeto.
 
 
 A continuación se muestra el fragmento de código correspondiente a la implementación de los dos constructores y del destructor.
 
 ```cpp
+
 complex_t::complex_t(double r,double i)
 {
 	r_=r;
@@ -168,9 +177,7 @@ complex_t::~complex_t(void)
 {
 	cout << "-- Bye, bye, complex! --" << endl;
 }
-
 ```
-
 La implementación del primer constructor inicializa la parte real y la parte imaginaria de un objeto definido con el tipo `complex_t` con el mensaje pasado a través de los parámetros `r`e `i`, respectivamente. Sin embargo, el constructor por defecto, inicializa los atributos con el valor `0`.  Finalmente, el destructor muestra por pantalla un texto de despedida.
 
 ### Declaración de objetos
@@ -183,49 +190,129 @@ int main(void)
 	complex_t a(1, 2), b(2, 3), c(3, 4), d;
 
 ```
-
 La primera línea de este procedimiento principal declara las objetos `a`, `b`, `c`  y `d`. Observamos dos tipos de declaraciones: 
 
  1. declaraciones con parámetros `a(1, 2), b(2, 3), c(3, 4)`
  2. declaraciones sin parámetros  `d`
  
-En el primer caso los objetos invocan al constructor que requiere dos parámetros. Así el objeto `a` se inicializa con el mensaje `2, 3`, que hará que el constructor inicialice los atributos correspondientes al este objeto con el valor `1`y `2` para la parte real e imaginaria, respectivamente.
+En el primer caso los objetos invocan al constructor que requiere dos parámetros. Así el objeto `a` se inicializa con el mensaje `(1, 2)`, que hará que el constructor inicialice los atributos correspondientes al este objeto con el valor `1`y `2` para la parte real e imaginaria, respectivamente.
 
-Sin embargo, el segundo caso, se refiere al objeto `d`, que es declarado sin pasarle ningún tipo de mensaje. En este caso, la declaración del objeto invocará al constructor por defecto, e inicializará el objeto con los valores `0`y `0`, para la parte real e imaginaria, respectivamente. 
+Sin embargo, el segundo caso, se refiere al objeto `d`, que es declarado sin pasarle ningún tipo de mensaje. En este caso, la declaración del objeto invocará al constructor por defecto, e inicializará el objeto con los valores `0` y `0`, para la parte real e imaginaria, respectivamente. 
 
-A continuación se amplía el fragmento de código incluyendo invocaciones a métodos.
+### Invocación de métodos
+
+Para cambiar el estado de un objeto, o para acceder a su contenido debemos invocar el método adecuado. La invocación de un método por parte de un objeto se lleva a cabo llamando a dicho método precedido del nombre del objeto seguido de un punto, añadiendo el mensaje apropiado. A continuación se amplía el fragmento de código anterior incluyendo invocaciones a métodos.
 
 ```cpp
 int main(void)
 {
-	complex_t a(1, 2), b(2, 3), c(3, 4), d;
+	complex_t a(1, 2), b;
 
 	cout << endl;
-	a.imprime_complejo(cout);
+	a.write_cartesian(cout);
 	cout << endl;
-	b.imprime_complejo(cout);
-	cout << endl;
-	c.imprime_complejo(cout);
-	cout << endl;
-	d.imprime_complejo(cout);
+	b.write_cartesian(cout);
 	cout << endl;
 	cout << endl;
 
-	cout << "Parte real      : "<< a.get_real()<< std::endl;
-	cout << "Parte imaginaria: "<< a.get_imag()<< std::endl;
-	cout << "Módulo          : "<< a.get_modulo()<< std::endl;
-	cout << "Fase            : "<< a.get_fase()<<std::endl;
+	cout << "Parte real      : "<< a.get_real()   << endl;
+	cout << "Parte imaginaria: "<< a.get_imag()   << endl;
 	cout << endl;
 
+    a.set_real(5);
 	/* a.r_ = 5; ERROR */
+
+	return 0;
+}
 ```
+Como se puede observar, los objetos `a` y `b` invocan al método `imprime_complejo` en el primer bloque de código con el mensaje `(cout)` (un flujo de salida) ¿Puedes adivinar qué se mostrará por pantalla?.
 
-Como se puede observar, cada uno de los objetos invoca al método `imprime_complejo` en el primer bloque de código con el mensaje `cout` (un flujo de salida) ¿Sabrías adivinar qué se mostrará por pantalla?. 
+En el segundo bloque de código el objeto `a` invoca los métodos `get_real` y `get_imag`. ¿Qué aparecerá en pantalla?
 
-En el segundo bloque de código el objeto `a` invoca los métodos `get_real`, `get_imag`, `get_modulo` y `get_fase`. ¿Qué aparecerá en pantalla?
+Es importante comprender que los atributos de un objecto sólo pueden ser modificados a través del interfaz. En el fragmento de código vemos un ejemplo en el que se modifica la parte real del objeto `a` mediante el método `set_real`. La penúltima línea recoge un acceso erróneo al atributo `r_` del objeto `a`. ¿Sabrías por qué?
 
-La última de las lineas recoge un acceso erróneo al atributo `r_` del objeto `a`. ¿Sabrías por qué? 
+No obstante no todos los métodos se invocan a través de un objeto. Este es el caso de los métodos declarados bajo la claúsula `private`. Estos métodos sólo pueden ser invocados desde otro método perteneciente a la clase en que es definido. Suelen ser métodos auxiliares que sólo van a ser utilizados internamente.
+
+A continuación se muestra un ejemplo en el que los métodos `get_mod`y `get_phase` han sido declarados bajo la claúsula `private`, y son utilizados de forma auxiliar por el procedimiento `write_polar`.
+
+```cpp
+void complex_t::write_polar(ostream& os) const
+{
+	const double mod = get_mod();
+	const double pha = get_phase();
+
+	os << setw(3) << fixed << setprecision(1) << mod;
+	os << " cos(";
+	os << setw(3) << fixed << setprecision(1) << pha;
+	os << ") + ";
+	os << setw(3) << fixed << setprecision(1) << mod;
+	os << " i sin(";
+	os << setw(3) << fixed << setprecision(1) << pha;
+	os << ")";
+}
+```
+Como se puede ver, ambos métodos privados son invocados directamente, sin estar precedidos por ningún objeto, ya que forman parte de la implementación de una clase.
 
 
+### Declaración de objetos constantes
+
+Además de objetos variables, podemos definir objetos constantes a partir de otros objetos. El siguiente fragmento de código muestra una ejemplo.
+
+```cpp
+int main(void)
+{
+	complex_t a(1, 2);
+
+	const complex_t aa(a), bb = a;
+
+	cout << "Parte real      : "<< aa.get_real()   << endl;
+	cout << "Parte imaginaria: "<< aa.get_imag()   << endl;
+	cout << "Módulo          : "<< aa.get_modulo() << endl;
+	cout << "Fase            : "<< aa.get_fase()   << endl;
+	cout << endl;
+
+	a.write_cartesian(cout);
+	cout << endl;
+
+    /* aa.set_real(5); ERROR */
+
+	return 0;
+}
+```
+Los objetos constantes, como el objeto `aa` no pueden ser modificados. Este tipo de objetos sólo puede invocar aquellos métodos de la clase que hayan sido declarados con el sufijo `const`. Declaramos este nuevo objeto utilizando un **constructor de copia**. El constructor de copia permite inicializar un objeto durante su declaración a partir de otro objeto existente. Normalmente no es neceesario declarar un constructor de copia. El compilador crea uno por defecto para cada tipo que definamos. Este constructor de copia transfiere el valor de los atributos del objeto emisor al objeto receptor. En nuestro caso, el objeto emisor sería el objeto `a`, que ha sido inicializado durante su declaración por el constructor con el mensaje `(1,2)`,  y el objeto receptor es el objeto constante `aa`.
+
+Vemos entre comentarios una método que tiene como propósito actualizar el objeto constante `aa`.  ¿Qué sucede compilamos este fragmento de código deshabilitando los comentarios y eliminando la palabra `ERROR`? 
+
+### Declaración de objetos dinámicos
+
+```cpp
+
+	complex_t a(1, 2), b(3, 4);
+
+	complex_t *ap, *bp, *cp, *dp;
+
+	ap = &a;
+	bp = new complex_t(6, 7);
+	cp = new complex_t(b);
+	dp = NULL;
+
+	cout << endl;
+	ap->write_cartesian(cout);
+	cout << endl;
+	bp->write_cartesian(cout);
+	cout << endl;
+	cp->write_cartesian(cout);
+	cout << endl;
+	/* dp->write_cartesian(cout);  ERROR */
+	cout << endl;
+
+    ap = NULL;
+
+	delete bp;
+	bp = NULL;
+
+	delete cp;
+	cp = NULL;	
+```
 
 
