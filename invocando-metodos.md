@@ -1,31 +1,30 @@
 # Invocando métodos
 
-Para cambiar el estado de un objeto, o para acceder a su contenido debemos invocar el método adecuado. La invocación de un método por parte de un objeto se lleva a cabo llamando a dicho método precedido del nombre del objeto seguido de un punto, añadiendo el mensaje apropiado. A continuación se amplía el fragmento de código anterior incluyendo invocaciones a métodos.
+Ref. [code](code/code1.cpp)
+
+Para cambiar el estado de un objeto, o para acceder a su contenido debemos invocar el método adecuado. La invocación de un método por parte de un objeto se lleva a cabo llamando a dicho método precedido del nombre del objeto seguido de un punto, añadiendo el mensaje apropiado. A continuación se amplía el fragmento de código de la sección anterior incluyendo invocaciones a métodos.
 
 ```cpp
 int main(void)
 {
-    complex_t a(1, 2), b;
+	complex_t a(1, 2), b;
 
-    cout << endl;
-    a.write_cartesian(cout);
-    cout << endl;
-    b.write_cartesian(cout);
-    cout << endl;
-    cout << endl;
+	cout << endl;
+	a.write_cartesian(cout); cout << endl;
+	b.write_cartesian(cout); cout << endl;
+	cout << endl;
 
-    cout << "Parte real      : "<< a.get_real()   << endl;
-    cout << "Parte imaginaria: "<< a.get_imag()   << endl;
-    cout << endl;
+	cout << "Parte real      : "<< a.get_real()<< endl;
+	cout << "Parte imaginaria: "<< a.get_imag()<< endl;
 
-    a.set_real(5);
-    /* a.r_ = 5; ERROR */
+	// a._r = 10; ERROR
 
-    return 0;
+	return 0;
+}
 }
 ```
 
-Como se puede observar, los objetos `a` y `b` invocan al método `imprime_complejo` en el primer bloque de código con el mensaje `(cout)` \(un flujo de salida\) ¿Puedes adivinar qué se mostrará por pantalla?.
+Como se puede observar, el objeto `a` invoca al método `imprime_complejo` en el primer bloque de código con el mensaje `(cout)` \(un flujo de salida\) ¿Puedes adivinar qué se mostrará por pantalla?.
 
 En el segundo bloque de código el objeto `a` invoca los métodos `get_real` y `get_imag`. ¿Qué aparecerá en pantalla?
 

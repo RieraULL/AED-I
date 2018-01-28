@@ -1,5 +1,7 @@
 # Implementando una clase
 
+Ref. [code](code/code1.cpp)
+
 Una vez hecha la declaración de los atributos y métodos, corresponde describir la **implementación de los métodos**, es decir, especificar qué operaciones lleva a cabo cada método. Esta implementación puede especificarse de diversas maneras. Una de ellas podría consistir en llevarla a cabo dentro de la propia declaración del método. Otra de las manera podría ser especificarla después de la definición de la clase, en un fichero aparte, o en el mismo fichero.
 
 Veamos un ejemplo de este segundo caso.

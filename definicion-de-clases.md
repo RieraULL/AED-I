@@ -1,10 +1,16 @@
 # Declarando una clase
 
-A continuación, veamos cómo se implementa una clase similar en un lenguaje orientado a objetos como es el C++. Como habíamos indicado anteriormente, una clase define un tipo de datos. Las variables que son definidas con una clase se llaman _objetos_, aunque la nomenclatura en OOP \(y en otras disciplinas\) depende del autor.
+Ref. [code](code/code1.cpp)
+
+A continuación, veamos cómo se declara una clase similar a la definida en la sección anterior en un lenguaje orientado a objetos como es el C++. Como habíamos indicado anteriormente, una clase define un tipo de dato. En este caso particular vamos a definir la clase `complex_t`, que representa un tipo de dato que almacena un [número complejo](https://es.wikipedia.org/wiki/Número_complejo).
+
+El siguiente código 
 
 ```cpp
 class complex_t {
+
 private:
+
     double r_;
     double i_;
 
@@ -34,7 +40,7 @@ private:
 };
 ```
 
-Este fragmento de [código](complex.cpp) corresponde con una descripción de un tipo de dato para representar un [número complejo](https://es.wikipedia.org/wiki/Número_complejo), similar al ejemplo anterior. La definición de una clase viene precedida por la palabra reservada `class` seguida del nombre de la clase. El cuerpo de la definición está delimitado por los símbolos `{` y `};`. Igual que en el caso anterior se definirá una estructura que representa un número complejo por sendos valores de tipo `double`, refiriéndose a la parte real y imaginaria mendiante `r_` e `i_`, respectivamente.
+La definición de una clase viene precedida por la palabra reservada `class` seguida del nombre de la clase, en este caso `complex_t`. El cuerpo de la definición está delimitado por los símbolos `{` y `};`. Igual que en el caso anterior se definirá una estructura que representa un número complejo por sendos valores de tipo `double`, refiriéndose a la parte real y imaginaria mendiante `r_` e `i_`, respectivamente.
 
 El cuerpo de una clase puede contener distintos tipos de elementos:
 
@@ -42,9 +48,9 @@ El cuerpo de una clase puede contener distintos tipos de elementos:
 * atributos
 * y métodos
 
-Con el fin de delimitar aquellos elementos de la clase ajenos al usuario, y aquellos otros que, sin embargo, podrá invocar el usuario se utiliza las **claúsulas** `private:` y `public:` respectivamente. De esta manera, el usuario que utilice este tipo de dato \(`complex_t`\) no podrá acceder a los elementos `r`_ e \`i_`, ni a las funciones`get\_mod`o`get\_phase`, pero sí a las funciones que se definen a continuación de la claúsula`public:\`.
+Con el fin de delimitar aquellos elementos de la clase ajenos al usuario, y aquellos otros que, sin embargo, podrá invocar el usuario se utiliza las **claúsulas** `private:` y `public:` respectivamente. De esta manera, el usuario que utilice este tipo de dato \(`complex_t`\) no podrá acceder a los elementos `r_` e `i_`, ni a las funciones`get\_mod`o`get\_phase`, pero sí a las funciones que se definen a continuación de la claúsula`public:\`.
 
-Las características de una clase \(y por tanto de los objetos definidos mediante el tipo de dato que representa esa clase\) vienen descritas por los **atributos**. Estos consisten en una secuencia de identificadores precedidos por un tipo de dato. En nuestro ejemplo los atributos son los identificadores `r_`  e `i_`, que representarán la parte real e imaginaria, respectivamente, de un número complejo. Nótese que en este caso los identificadores acaban con el símbolo guión bajo `_`: se trata de un convenio que persigue el diseño un código fuente más claro, diferenciando las variables ordinarias de los atributos de una clase meidante este símbolo. Algunos autores prefieren utilizar este símbolo simultáneamente como prefijo y sufijo de los identificadores de los atributos, o incluso únicamente como prefijo. En estas notas optaremos por seguir el convenio adelantado en el fragmento de código anterior.
+Las características de una clase \(y por tanto de los objetos definidos mediante el tipo de dato que representa esa clase\) vienen descritas por los **atributos**. Estos consisten en una secuencia de identificadores precedidos por un tipo de dato. En nuestro ejemplo los atributos son los identificadores `r_`  e `i_`, que representarán la parte real e imaginaria, respectivamente, de un número complejo. Nótese que en esta versión de la clase los identificadores acaban con el símbolo guión bajo `_`: se trata de un convenio que persigue el diseño un código fuente más claro, diferenciando las variables ordinarias de los atributos de una clase meidante este símbolo. Algunos autores prefieren utilizar este símbolo simultáneamente como prefijo y sufijo de los identificadores de los atributos, o incluso únicamente como prefijo. En estas notas optaremos por seguir el convenio adelantado en el fragmento de código anterior.
 
 Los **métodos** son las funciones que permiten alterar o extraer las características de un objeto. Los valores concretos de los parámetros que pasamos a un método se denominan [_mensajes_](https://en.wikipedia.org/wiki/Message_passing). En el fragmento de código anterior se observa que se declaran ciertos procedimientos para modificar el valor de algún atributo \(aquellos cuyo nombre contiene el prefijo `set_`\), y funciones para leer las características del objeto \(aquellas funciones cuyo nombre contiene el prefijo `get_`\). Aunque preceder el nombre de este tipo de métodos \(métodos de acceso a los atributos\) por los prefijos `set_` y `get_` no es en absoluto obligatorio, está bastante extendido su uso. En ocasiones se declaran métodos privados, que serán utilizados como herramientas de otros métodos. Así, la única manera de _comunicarnos_ con un objeto es a través de los métodos públicos. El conjunto de métodos públicos que nos permite modificar o leer el _estado_ de un objeto se denomina **interfaz**.
 

@@ -1,5 +1,7 @@
 # Declaración de referencias y referencias constantes
 
+Ref. [code](code/code4.cpp)
+
 Las referencias y referencias constantes son ingredientes del lenguaje C++ que permiten declarar alias de objetos. Las referencias permiten actuar sobre el objeto tal y como si fuera el objeto original, mientras que las referencias constantes no permiten la modificación del objeto.
 
 ```cpp
@@ -9,17 +11,14 @@ int main(void)
     complex_t &ar(a), &br = a;
     const complex_t &cr = a;
 
-    ar.write_cartesian(cout);
-    cout << endl;
+    ar.write_cartesian(cout); cout << endl;
 
     ar.set_real(25);
 
-    ar.write_cartesian(cout);
-    cout << endl;
+    ar.write_cartesian(cout); cout << endl;
 
     br.set_real(2);
-    a.write_cartesian(cout);
-    cout << endl;
+    a.write_cartesian(cout); cout << endl;
 
     return 0;
 }
