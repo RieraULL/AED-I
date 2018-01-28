@@ -2,7 +2,7 @@
 
 Ref. [code](code/code6.cpp)
 
-```
+```cpp
 ostream& operator<<(ostream& os, const complex_t& c)
 {
 	c.write_cartesian(os);
