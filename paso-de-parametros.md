@@ -2,7 +2,8 @@
 
 Ref. [code](code/code5.cpp)
 
-El paso de objetos a alguna función o método se suele efectuar mediante una _referencia constante_ o una _referencia_ al objeto. En caso de que simplemente queramos pasar un objeto por _valor_, el cauce habitual es el uso de una referencia constante al parámetro. Esto se debe a que los objetos suelen ser estructuras complejas que pueden albergar gran cantidad de datos \(por ejemplo, una matriz\), así que, en caso de no utilizar una referencia constante, estaríamos enviando una copia completa de nuestro objeto al método que lo require. Sin embargo, si utilizamos una referencia constante, estaremos enviando únicamente la dirección que tiene dicho objeto en memoria, lo cual puede implicar una diferencia sustancial en memoria y eficienia.  
+El paso de objetos a alguna función o método se suele efectuar mediante una _referencia constante_ o una _referencia_ al objeto. En caso de que simplemente queramos pasar un objeto por _valor_, el cauce habitual es el uso de una referencia constante al parámetro. Esto se debe a que los objetos suelen ser estructuras complejas que pueden albergar gran cantidad de datos \(por ejemplo, una matriz\), así que, en caso de no utilizar una referencia constante, estaríamos enviando una copia completa de nuestro objeto al método que lo require. Sin embargo, si utilizamos una referencia constante, estaremos enviando únicamente la dirección que tiene dicho objeto en memoria, lo cual puede implicar una diferencia sustancial en memoria y eficiencia.
+
 En caso de que deseemos alterar el contenido del parámetro dentro del método debemos pasarlo por referencia.
 
 ```cpp
@@ -35,8 +36,9 @@ private:
     double get_mod(void) const;
     double get_phase(void) const;
 };
+```
 
-
+```cpp
 void complex_t::get(complex_t& c) const
 {
     c.r_ = r_;
@@ -48,7 +50,10 @@ void complex_t::set(const complex_t& c)
     r_ = c.r_;
     i_ = c.i_;
 }
+```
 
+
+```cpp
 int main(void)
 {
     complex_t a(1, 2), b, c;
