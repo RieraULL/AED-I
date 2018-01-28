@@ -1,4 +1,4 @@
-# Declarando una clase 
+# Declarando una clase
 
 A continuación, veamos cómo se implementa una clase similar en un lenguaje orientado a objetos como es el C++. Como habíamos indicado anteriormente, una clase define un tipo de datos. Las variables que son definidas con una clase se llaman _objetos_, aunque la nomenclatura en OOP \(y en otras disciplinas\) depende del autor.
 
@@ -57,4 +57,6 @@ Existen familias de métodos especiales. Es el caso de los **constructores** y d
 El destructor es un único método que tiene como propósito efectuar todas aquellas tareas requeridas después de que un objeto de esa clase deje de existir. Este tipo de métodos suele estar relacionado con la memoria dinámica. En ocasiones hay objetos que durante su construcción requieren de la reserva de memoria dinámica, así que el destructor llevaría a cabo las tareas de liberación de esta memoria cuando el objeto, al dejar de exisitir, no necesite esa memoria reservada.
 
 El fragmento de código anterior contiene únicamente la declaración de los _atributos_ y _métodos_ que formarán parte de esta clase \(`complex_t`\). La implementación de los métodos, es decir, la definición de las acciones que llevarán a cabo, se efectuará en este caso durante un estadío posterior.
+
+
 
