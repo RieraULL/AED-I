@@ -59,7 +59,7 @@ int main(void)
     complex_t a(1, 2), b, c;
 
     b.set(a);
-	b.get(c);
+    b.get(c);
 
     b.write_cartesian(cout); cout << endl;
     c.write_cartesian(cout); cout << endl;
