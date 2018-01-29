@@ -1,6 +1,6 @@
 # Paso de parámetros por valor y por referencia
 
-Ref. [code](code/code5.cpp)
+Ref. [code](https://github.com/RieraULL/AED-ULL/blob/master/code/code5.cpp)
 
 El paso de objetos a alguna función o método se suele efectuar mediante una _referencia constante_ o una _referencia_ al objeto. En caso de que simplemente queramos pasar un objeto por _valor_, el cauce habitual es el uso de una referencia constante al parámetro. Esto se debe a que los objetos suelen ser estructuras complejas que pueden albergar gran cantidad de datos \(por ejemplo, una matriz\), así que, en caso de no utilizar una referencia constante, estaríamos enviando una copia completa de nuestro objeto al método que lo require. Sin embargo, si utilizamos una referencia constante, estaremos enviando únicamente la dirección que tiene dicho objeto en memoria, lo cual puede implicar una diferencia sustancial en memoria y eficiencia.
 
