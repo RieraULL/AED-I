@@ -1,6 +1,6 @@
 # Declarando una clase
 
-Ref. [code](code/code1.cpp)
+Ref. [code](https://github.com/RieraULL/AED-ULL/blob/master/code/code1.cpp)
 
 A continuación, veamos cómo se declara una clase similar a la definida en la sección anterior en un lenguaje orientado a objetos como es el C++. Como habíamos indicado anteriormente, una clase define un tipo de dato. En este caso particular vamos a definir la clase `complex_t`, que representa un tipo de dato que almacena un [número complejo](https://es.wikipedia.org/wiki/Número_complejo).
 
