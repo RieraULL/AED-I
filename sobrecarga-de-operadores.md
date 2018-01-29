@@ -51,3 +51,8 @@ int main(void)
 }
 ```
 **ACTIVIDAD**: ¿Serías capaz de sobrecargar el operador `+` para que efectúe la suma de un número complejo con uno real? ¿Serías capaz de sobrecargar el operador `+` para efectuar la suma entre un número real y un número complejo?
+
+## Recursos
+
+1. https://es.wikibooks.org/wiki/Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores
+2. http://en.cppreference.com/w/cpp/language/operators
