@@ -1,6 +1,6 @@
 # Invocando métodos
 
-Ref. [code](code/code1.cpp)
+Ref. [code](https://github.com/RieraULL/AED-ULL/blob/master/code/code1.cpp)
 
 Para cambiar el estado de un objeto, o para acceder a su contenido debemos invocar el método adecuado. La invocación de un método por parte de un objeto se lleva a cabo llamando a dicho método precedido del nombre del objeto seguido de un punto, añadiendo el mensaje apropiado. A continuación se amplía el fragmento de código de la sección anterior incluyendo invocaciones a métodos.
 
