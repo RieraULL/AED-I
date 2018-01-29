@@ -1,6 +1,6 @@
 # Sobrecarga de operadores
 
-Ref. [code](code/code6.cpp)
+Ref. [code](https://github.com/RieraULL/AED-ULL/blob/master/code/code6.cpp)
 
 La sobrecarga de operadores extiende el mecanismo de la sobrecarga de funciones permitiendo definir operaciones involucrando operandos para los que la operación no estaba originalmente definida. Por ejemplo, el operador `+` está definido en C++ para operandos de tipo `int`,  `long`, `float`, `double`, ... Sin embargo, si intentamos efectuar una suma entre dos números complejos el compilador arrojará un mensaje de error. 
 
