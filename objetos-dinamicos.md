@@ -1,6 +1,6 @@
 # Objetos dinámicos
 
-Ref. [code](code/code3.cpp)
+Ref. [code](https://github.com/RieraULL/AED-ULL/blob/master/code/code3.cpp)
 
 En ocasiones debemos crear y destruir objetos de forma dinámica. En el siguiente ejemplo se declara cuatro punteros a objetos de tipo `complex_t`. El puntero `ap` se inicializa con la dirección del objeto `a`; el puntero `bp` se inicializa con la memoria reservada para un objeto dinámico que ha sido inicializado con el constructor al que se le pasa el mensaje `(6, 6)`; el puntero `cp` también se inicializa con un objeto dinámico creado a partir del constructor de copia inicializado con el objeto `b`, y finalmente, el puntero `dp` se inicializa con el puntero nulo.
 
