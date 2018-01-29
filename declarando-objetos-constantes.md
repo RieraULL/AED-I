@@ -1,6 +1,6 @@
 # Objetos constantes
 
-Ref. [code](code/code2.cpp)
+Ref. [code](https://github.com/RieraULL/AED-ULL/blob/master/code/code2.cpp)
 
 Además de objetos variables, podemos definir objetos constantes a partir de otros objetos. El siguiente fragmento de código muestra una ejemplo.
 
