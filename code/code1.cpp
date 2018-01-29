@@ -1,3 +1,5 @@
+/* Compilación: g++ -g code1.cpp -o code1 */
+
 #include <cmath>
 #include <iostream>
 #include <iomanip>

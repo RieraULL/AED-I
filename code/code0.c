@@ -1,5 +1,9 @@
+/* Compilación: gcc -g code0.c -lm -o code0 */
+
 #include <stdio.h>
 #include <math.h>
+
+#define EPS 1E-3
 
 struct struct_complex_t {
 
@@ -9,23 +13,18 @@ struct struct_complex_t {
 
 typedef struct struct_complex_t complex_t; 
 
-void inicializa_complejo(complex_t* c, double r, double i)
+void inicializa_complejo1(complex_t* c, double r, double i)
 {
 	c->r_ = r;
 	c->i_ = i;
 }
 
-void inicializa_complejo(complex_t* c)
+void inicializa_complejo2(complex_t* c)
 {
 	c->r_ = 0;
 	c->i_ = 0;
 }
 
-void destruye_complejo(complex_t* c)
-{
-	c->r_ = 0;
-	c->i_ = 0;
-}
 
 void imprime_complejo(complex_t* c)
 {
@@ -82,29 +81,29 @@ complex_t producto(complex_t* c1,complex_t* c2)
 	return aux;	
 }
 
-bool iguales(complex_t* c1,complex_t& c2)
+int iguales(complex_t* c1,complex_t* c2)
 {
-	return (fabs(c1->r_ - c2->r_) < EPSILON) && (fabs(c1->i_ - c2->i_) < EPSILON);
+	return ((fabs(c1->r_ - c2->r_) < EPS) && (fabs(c1->i_ - c2->i_) < EPS));
 }
 
 int main(void)
 {	
 	complex_t a,b,c,d;
 	
-	inicializa_complejo(&a, 1, 2);
-	inicializa_complejo(&b, 2, 3);
-	inicializa_complejo(&c, 3, 4);
-	inicializa_complejo(&d);
+	inicializa_complejo1(&a, 1, 2);
+	inicializa_complejo1(&b, 2, 3);
+	inicializa_complejo1(&c, 3, 4);
+	inicializa_complejo2(&d);
 
 	imprime_complejo(&a);
 	printf("\n");
 	imprime_complejo(&b);
-	printf("\n")
+	printf("\n");
 	imprime_complejo(&c);
-	printf("\n")
+	printf("\n");
 	imprime_complejo(&d);
-	printf("\n")
-	printf("\n")
+	printf("\n");
+	printf("\n");
 	
 	printf("Parte real      : %lf \n", get_real(&a));
 	printf("Parte imaginaria: %lf \n", get_imag(&a));
@@ -117,14 +116,14 @@ int main(void)
 	set_real(&a,5);
 
 	imprime_complejo(&a);
-	printf(“\n”);
+	printf("\n");
 
 	printf("Suma             : ");
 	imprime_complejo(&a);
 	printf(" + ");
 	imprime_complejo(&b);
 	printf(" = ");
-	c = suma(a,b);
+	c = suma(&a, &b);
 	imprime_complejo(&c);
 	printf("\n");
 
@@ -136,9 +135,4 @@ int main(void)
 	d=  producto(&a, &b);
 	imprime_complejo(&d);
 	printf("\n");
-
-	destruye_complejo(&a);
-	destruye_complejo(&b);
-	destruye_complejo(&c);
-	destruye_complejo(&d);
 }

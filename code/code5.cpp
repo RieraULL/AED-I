@@ -1,3 +1,5 @@
+/* Compilación: g++ -g code5.cpp -o code5 */
+
 #include <cmath>
 #include <iostream>
 #include <iomanip>
@@ -87,6 +89,12 @@ void complex_t::set(const complex_t& c)
 	i_ = c.i_;
 }
 
+void complex_t::set_real(double r)
+{
+	r_ = r;
+}
+
+
 void complex_t::set_imag(double i)
 {
 	i_ = i;
@@ -115,6 +123,8 @@ double complex_t::get_phase(void) const
 
 int main(void)
 {
+	complex_t a(1, 2), b, c;
+
     b.set(a);
 	b.get(c);
 

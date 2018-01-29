@@ -1,3 +1,5 @@
+/* Compilación: g++ -g code3.cpp -o code3 */
+
 #include <cmath>
 #include <iostream>
 #include <iomanip>
@@ -87,6 +89,11 @@ void complex_t::set(const complex_t& c)
 {
 	r_ = c.r_;
 	i_ = c.i_;
+}
+
+void complex_t::set_real(double r)
+{
+	r_ = r;
 }
 
 void complex_t::set_imag(double i)
