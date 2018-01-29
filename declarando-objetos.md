@@ -1,6 +1,6 @@
 # Declaración de objetos
 
-Ref. [code](code/code1.cpp)
+Ref. [code](https://github.com/RieraULL/AED-ULL/blob/master/code/code1.cpp)
 
 El siguiente fragmento de código recoge la declaración de varios objetos. Recordemos que un objeto es una variable cuyo tipo de dato es una clase. Por ello la declaración de un objeto se hace de forma similar a la declaración de una variable, pero con la diferencia de que la declaración debe invocar a uno de los destructores. En caso de que se invoque al constructor por defecto, no hay que especificar paréntesis. Veamos un ejemplo de declaración de objetos.
 
