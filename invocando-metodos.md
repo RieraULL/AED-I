@@ -21,7 +21,6 @@ int main(void)
 
 	return 0;
 }
-}
 ```
 
 Como se puede observar, el objeto `a` invoca al método `imprime_complejo` en el primer bloque de código con el mensaje `(cout)` \(un flujo de salida\) ¿Puedes adivinar qué se mostrará por pantalla?.
