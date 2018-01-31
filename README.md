@@ -11,7 +11,6 @@ El conjunto de las notas aquí incluidas **no constituyen** apuntes de la asigna
 
 ## Índice
 
-* [Presentación](README.md)
 * Introducción a C++
   * [Punteros en C++](punteros.md)
   * [Clases](clases.md)

@@ -204,7 +204,7 @@ istream& vector_t::read(istream& is)
 
 ## Actividades propuestas
 
-1. Modifica la clase vector para que incluya, además de los constructores actuales, un constructor 
+1. Modifica la clase `vector_t` para que incluya, además de los constructores actuales, un constructor 
 ~~~cpp
 	vector_t(int a, int b);
 ~~~
@@ -216,6 +216,6 @@ que permita indexar el vector en el rango [a, b]. Permitiendo accesos como éste
 ~~~
 :boom: Pista: Se deben cambiar los atributos, incluso de tipo de dato.
 
-2.- Modifica la clase vector para que el método `resize` preserve el contenido original del vector.
+2. Modifica la clase `vector_t` para que el método `resize` preserve el contenido original del vector.
 
-
+3. Modifica la clase `vector_t` para que almacene elementos de tipo entero.
