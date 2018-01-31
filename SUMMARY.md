@@ -12,3 +12,4 @@
     * [Objetos dinámicos](objetos-dinamicos.md)
     * [Paso de parámetros](paso-de-parametros.md)
     * [Sobrecarga de operadores](sobrecarga-de-operadores.md)
+  *[Un ejemplo complejo](un-ejemplo.md)
