@@ -1,4 +1,4 @@
-#Un ejemplo de una clase compleja
+# Un ejemplo de una clase compleja
 
 Ref. [code1a](https://github.com/RieraULL/AED-ULL/blob/master/vector/vector1/vector_t.hpp)
 Ref. [code1b](https://github.com/RieraULL/AED-ULL/blob/master/vector/vector1/vector_t.cpp)
@@ -62,20 +62,20 @@ Vamos a crear tres constructores:
 - Un constructor al que se le pasa como parámetro el tamaño del vector.
 - Y un constructor de copia. 
 
-En este caso es de gran importancia llevar a cabo un constructor de copia, ya que, como habíamos adelantado en secciones anteriores, el constructor de copia que crea el compilador por defecto en el objeto receptor los atributos del objeto original. Esto supone que si llevamos a cabo una llamda de este tipo
+En este caso es de gran importancia llevar a cabo un constructor de copia, ya que, como habíamos adelantado en secciones anteriores, el constructor de copia que crea el compilador por defecto, copia en el objeto receptor los atributos del objeto original. Esto supone que si llevamos a cabo una llamada de este tipo:
 
 ~~~cpp
 	vector_t a(5);
 	vector_t b(a);
 ~~~
 
-el vector `a` puede que tenga en sus atributos los valores `(0xA1B34, 5)`. Así que al crear el vector `b` lo inicializaremos con el mismo contenido `(0xA1B34, 5)`. El gran inconveniente es que ambos vectores comparten la misma dirección base, por lo que si introducimos un elemento en el vector `a`:
+el vector `a` puede que tenga en sus atributos los valores `(0xA1B34, 5)`; así que al crear el vector `b` lo inicializaremos con el mismo contenido `(0xA1B34, 5)`. El gran inconveniente es que ambos vectores comparten la misma dirección base, por lo que si introducimos un elemento en el vector `a`:
 
 ~~~cpp 
 	a[5] = 8;
 ~~~
 
-habrá también un `8` almacenado en la posición 5.
+habrá también un `8` almacenado en la posición 5 de `b`.
 
 Por esta razón el constructor de copia que diseñemos debe reservar una región de memoria para `b` independiente de la región utilizada por el vector `a`.
 
