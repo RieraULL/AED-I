@@ -156,7 +156,7 @@ int main(void){
 ~~~
 
 
-## Referencias sobre punteros en la *web*
+## Recursos
 
 - http://www.cplusplus.com/doc/tutorial/pointers/
 - https://www.ntu.edu.sg/home/ehchua/programming/cpp/cp4_PointerReference.html
