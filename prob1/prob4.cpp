@@ -1,0 +1,48 @@
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+
+#define MAX_SZ  10
+#define MAX_VAL 50
+
+using namespace std;
+
+int suma(int v[], size_t sz)
+{
+	int aux = 0;
+
+	for(size_t i = 0; i < sz; i ++)
+		aux = aux + v[i];
+
+	return aux;
+}
+
+size_t cont_pair(int v[], size_t sz)
+{
+	size_t cont = 0;
+
+	for(size_t i = 0; i < sz; i ++)
+		 if (v[i] % 2 == 0)
+			cont ++;
+
+	return cont;
+}
+
+size_t cont_odd(int v[], size_t sz)
+{
+	size_t cont = 0;
+
+	for(size_t i = 0; i < sz; i ++)
+		 if (v[i] % 2 != 0)
+			cont ++;
+
+	return cont;
+}
+
+
+int main(void)
+{
+	int v[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	
+}
+
