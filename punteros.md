@@ -75,6 +75,8 @@ En el ejemplo ficticio de la figura anterior, vemos que el puntero `a_ptr` se en
 
 Los vectores, tal y como los conocemos en C++ resultan ser punteros a regiones de memoria en la que se almacena un bloque de memoria homogénea. Por ello, podemos acceder a sus elementos utilizando la notación de índice con los símbolos `[]` o mediante aritmética de punteros.
 
+En suma, el nombre de un vector es un puntero que apunta al primer elemento (índice 0) de éste. Por ejemplo, supongamos que `a` es un vector de `int`, `a` es también un puntero `*int`, apuntando al primer elemento del vector. Es decir, `a` es lo mismo que `&a[0]`. En consecuencia, `*a` es  `a[0]`; `*(a + i)` es  `a[i]`.
+
 <p align="center">
 <img src="Figuras/Vect.png" width="300px" >
 </p>
