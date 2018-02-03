@@ -17,20 +17,25 @@ Ref. [code5CPP](https://github.com/RieraULL/AED-ULL/blob/master/code1/pointer5.c
 
 ## Introducción
 
-Los punteros son extremadamente potentes porque le permiten acceder a direcciones y manipular sus contenidos. Pero también son extremadamente complejos de manejar. Utilizándolos correctamente, podrían mejorar en gran medida la eficiencia y el rendimiento. Por otro lado, su uso incorrecto podría generar muchos problemas, desde códigos no legibles y no actualizables, hasta errores difíciles de corregir, como fugas de memoria y desbordamiento de búfer, que pueden exponer el sistema a la piratería. Muchos lenguajes nuevos (como Java y C #) eliminan el puntero de su sintaxis para evitar las *trampas* de los punteros, proporcionando administración de memoria automática.
+Los punteros son extremadamente potentes porque le permiten acceder a direcciones y manipular sus contenidos. Pero también son extremadamente complejos de manejar. Utilizándolos correctamente, podrían mejorar en gran medida la eficiencia y el rendimiento de nuestros porgrams. Por otro lado, su uso incorrecto podría dar lugar a muchos problemas, desde códigos no legibles, hasta errores difíciles de detectar y corregir, como pérdidas de memoria y accesos incorrectoas a memoria, que pueden exponer el sistema a la piratería. Muchos lenguajes nuevos (como Java y C#) eliminan el puntero de su sintaxis para evitar las *trampas* inherentes a este mecanismo, proporcionando administración de memoria automática.
 
-Cada posición de memoria tiene una *dirección* y contiene un dato. La dirección es un número (a menudo expresado en hexadecimal), que puede ser difícil de usar por los programadores. Depende exclusivamente del programador interpretar el significado de los datos, como números enteros, números reales, caracteres o cadenas.
+Cada posición de memoria tiene una *dirección* y contiene un dato. La dirección es un número (a menudo expresado en hexadecimal), que puede ser tediosa y difícil de usar por los programadores. Dependería exclusivamente del programador interpretar el significado de los datos, como números enteros, números reales, caracteres o cadenas.
 
-Para facilitar la programación cuando se utiliza la dirección numérica los primeros lenguajes de programación  introdujeron el concepto de variables. Una variable es una ubicación con nombre que puede almacenar un valor de un tipo particular. En lugar de direcciones numéricas. Así,  nombres (o identificadores) se asocian a ciertas direcciones. Además, los tipos (como `int`, `double`, `char`) están asociados con los contenidos para facilitar la interpretación de los datos.
+Para facilitar la programación cuando se utiliza la dirección numérica, los primeros lenguajes de programación introdujeron el concepto de variables. Una variable es una ubicación con nombre que puede almacenar un valor de un tipo particular. Así, se asocian nombres (o *identificadores*) a ciertas direcciones. Además, el mecanismo de las variables hace que se asocien también a los contenidods de memorias tipos de datos (como `int`, `double`, `char`) para facilitar la interpretación de los datos.
 
-Una variable de puntero (o puntero) es básicamente una variable normalque pueden almacenar un dato. A diferencia de la variable normal que almacena un valor (como un `int`, un `double`, un `char`), un puntero almacena una dirección de memoria.
+Una variable de puntero (o puntero) es básicamente una variable normal que pueden almacenar un dato. A diferencia de la variable normal que almacena un valor (como un `int`, un `double`, o un `char`), un puntero almacena una dirección de memoria.
+
+Veamos un ejemplo en la siguiente figura.
 
 <p align="center">
 <img src="Figuras/Mem.png" width="300px" >
 </p>
 
+La figura muestra un conjunto de celdas consecutivas que representan la memoria. Cada una de las celdas puede almacenar una valor (en este caso, a efectos de ilustración, una palabra de ocho bits). Ademas, cada celda tiene asocidada una dirección (que a efectos de ilustración, es de dieciséis bits). Los compiladores permiten que este mecanismo de bajo nivel sea transparente al programador, permitiendo el uso de tipos de datos y variables. 
 
-El siguiente ejemplo muestra la declaración y uso de dos punteros.
+En la ilustración se define una variable `a` de tipo `int`. En este ordenador imaginario el tipo `int`requiere dos celdas de ocho bits. Además, se define la variable `b` de tipo `double`. Este compilador imaginario requiere ocho palabras de ocho bits para definir un tipo `double`. 
+
+El fragmento de programa que se muestra a continuación representa la definición de estas dos variables en lenguaje C++. Además, en un momento posterior se le asignan los valores `5` a la variable `a`, y `12.6` a la variable `b`. El valor `5` decimal se almacenará en `a` como el número hexadecimal `0x0005` en la celda de memoria definidas al efecto. Por otro lado, el número decimal `12.6` se almacenará siguiendo un formato de número real que nos inventamos: una *mantisa* de `126` (`0x0073` en hexadecimal), y un *exponente* de `-1` almacenado como `0xFFFF` en complemento a dos.   
 
 ~~~cpp
 int main(void){
@@ -55,14 +60,24 @@ int main(void){
 }
 ~~~
 
+En el fragmento de código se definen dos variables de tipo puntero `a_ptr` y `b_ptr`. Nótese que es importante definir el tipo de dato al que apuntan las variables puntero (`int` y `double` respectivamente), para facilitar el acceso posterior a los datos. Estas dos variables puntero se almacenan igual que otra variable, aunque su contenido va a se direcciones de memoria.  
+
 Cuando se declara una variable puntero, su contenido no se inicializa. En otras palabras, contiene una dirección *basura*, que por supuesto no es una dirección válida. ¡**Esto es muy peligroso**! Debe inicializarse un puntero asignándole una dirección válida. Esto normalmente se realiza a través del operador de dirección (`&`), o asignándole el puntero nulo `NULL`.
 
 El operador de *dirección* (`&`) opera en una variable y devuelve la dirección de la variable. Por ejemplo, si `a` es una variable `int`, `&a`devuelve la dirección de memoria de la variable.
 
 El operador de *indirección* (o de *desreferenciación*) (`*`) opera en un puntero y devuelve el valor almacenado en la dirección guardada en la variable d puntero. Por ejemplo, si `a_ptr` es un puntero a `int`, `*a_ptr` devuelve el valor `int` apuntado `a_ptr`.
 
+En el ejemplo ficticio de la figura anterior, vemos que el puntero `a_ptr` se encuentra en la dirección `0x4A25` y su contenido es la dirección de la variable `a` (`0x4A1F`). Mientras que el puntero `b_ptr` se encuentra en la dirección `0x4A27`, y almacena la dirección `0x4A21`, es decir, la celda donde se encuentra la variable `b`. 
+
 
 ## Vectores y punteros
+
+Los vectores, tal y como los conocemos en C++ resultan ser punteros a regiones de memoria en la que se almacena un bloque de memoria homogénea. Por ello, podemos acceder a sus elementos utilizando la notación de índice con los símbolos `[]` o mediante aritmética de punteros.
+
+<p align="center">
+<img src="Figuras/Vect.png" width="300px" >
+</p>
 
 El siguiente fragmento de código muestra cómo los vectores definidos en C++ son en realidad punteros que apunta al comienzo de una región de memoria que ha sido reservada para almacenar datos uniformes.
 
