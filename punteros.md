@@ -25,7 +25,10 @@ Para facilitar la programación cuando se utiliza la dirección numérica los pr
 
 Una variable de puntero (o puntero) es básicamente una variable normalque pueden almacenar un dato. A diferencia de la variable normal que almacena un valor (como un `int`, un `double`, un `char`), un puntero almacena una dirección de memoria.
 
-![Memoria](Figuras/Mem.png | width=100)
+<p align="center">
+<img src="Figuras/Mem.pdf" width="300px" >
+</p>
+
 
 El siguiente ejemplo muestra la declaración y uso de dos punteros.
 
