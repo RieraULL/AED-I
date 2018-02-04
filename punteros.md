@@ -15,6 +15,10 @@ Ref. [code4CPP](https://github.com/RieraULL/AED-ULL/blob/master/code1/pointer4.c
 Ref. [code5C](https://github.com/RieraULL/AED-ULL/blob/master/code1/pointer5.c)
 Ref. [code5CPP](https://github.com/RieraULL/AED-ULL/blob/master/code1/pointer5.cpp)
 
+Ref. [code6CPP](https://github.com/RieraULL/AED-ULL/blob/master/code1/func1.cpp)
+
+Ref. [code7CPP](https://github.com/RieraULL/AED-ULL/blob/master/code1/func2.cpp)
+
 ## Introducción
 
 Los punteros son extremadamente potentes porque le permiten acceder a direcciones y manipular sus contenidos. Pero también son extremadamente complejos de manejar. Utilizándolos correctamente, podrían mejorar en gran medida la eficiencia y el rendimiento de nuestros porgrams. Por otro lado, su uso incorrecto podría dar lugar a muchos problemas, desde códigos no legibles, hasta errores difíciles de detectar y corregir, como pérdidas de memoria y accesos incorrectoas a memoria, que pueden exponer el sistema a la piratería. Muchos lenguajes nuevos (como Java y C#) eliminan el puntero de su sintaxis para evitar las *trampas* inherentes a este mecanismo, proporcionando administración de memoria automática.
@@ -139,6 +143,64 @@ int main(void){
 }
 ~~~
 
+## Punteros a funciones
+Un recurso muy sofisticado y que puede hacer nuestros procesos selectivos elegantes (evitando la claúsula `switch` `case`) es el uso de punteros a funciones. Los punteros a funciones permiten utilizar funciones como parámetros de otras funciones, o incluso, como elemento de un vector de punteros a funciones.
+
+A continuación se muestran dos ejemplos. 
+
+~~~cpp
+typedef int (*opera_ptr)(int, int);
+ 
+int suma (int n1, int n2) { return n1 + n2; }
+int rest (int n1, int n2) { return n1 - n2; }
+int mult (int n1, int n2) { return n1 * n2; }
+int div  (int n1, int n2) { return n1 / n2; }
+ 
+int opera(int n1, int n2, opera_ptr operador) 
+{
+   return (*operador)(n1, n2);
+}
+ 
+int main(void) 
+{
+   const int a = 10, b = 5;
+ 
+   cout << opera(a, b, suma)  << endl;
+   cout << opera(a, b, rest)  << endl;
+   cout << opera(a, b, mult)  << endl;
+   cout << opera(a, b, div )  << endl;
+}
+~~~
+
+En este primer ejemplo, se define un nuevo tipo de dato a través de `typedef`. Se trata de un tipo de dato puntero a una función que devuelve un entero, y tiene como parámetros dos enteros (estúdiese con detalle la sintáxis). Seguidamente se definen e implementas cuatro funciones que cumplen con los requisitos del nuevo tipo de dato definido previamente. Seguidamente se define e implementa una función (`opera`), a la cual, entre otros, se le pasa como parámetro un puntero a una función (el nombre de una función). La implementación de esta función lleva a cabo una llamada a la función que se pasa como parámetro. Finalmente, el programa principal invoca a la función `opera` con las cuatro funciones parámetro definidas anteriormente.
+
+~~~cpp
+typedef int (*opera_ptr)(int, int);
+ 
+int suma (int n1, int n2) { return n1 + n2; }
+int rest (int n1, int n2) { return n1 - n2; }
+int mult (int n1, int n2) { return n1 * n2; }
+int div  (int n1, int n2) { return n1 / n2; }
+ 
+
+int opera(int n1, int n2, opera_ptr operador) 
+{
+   return (*operador)(n1, n2);
+}
+ 
+int main(void) 
+{
+   opera_ptr opera_array[] = {suma, rest, mult, div};
+
+   const int a = 10, b = 5;
+
+   for(size_t i = 0; i < N_OP; i++)
+		cout << opera(a, b, opera_array[i]) << endl;
+}
+~~~
+
+El segundo ejemplo incluye la definición de un vector de punteros a funciones (`opera_array`). Véase la flexibilidad que produce el uso de estos vectores, incluso en la definición de un menú. ¿Cómo lo implementarías?
+
 ## Operadores `new` y `delete`
 
 En lugar de definir una variable `int` y asignar la dirección de la variable puntero `a_ptr` (`a_ptr = &a`), el almacenamiento puede asignarse dinámicamente en tiempo de ejecución, a través del operador `new`. En C++, cada vez que asigna un fragmento de memoria dinámicamente a través de `new`, de debe eliminar después de usar, (es decir, debe liberarse la memoria).
@@ -182,5 +244,6 @@ int main(void){
 
 - http://www.cplusplus.com/doc/tutorial/pointers/
 - https://www.ntu.edu.sg/home/ehchua/programming/cpp/cp4_PointerReference.html
+- http://en.cppreference.com/w/cpp/language/pointer
 
 
