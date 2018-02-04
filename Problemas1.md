@@ -10,9 +10,9 @@ int scal_prod(int v1[], int v2[], size_t sz)
 
 Elabora además, un programa principal en el que se inicialicen dos vectores `v1` y `v2` con números aleatorios con valores comprendidos entre -50 y 50, y efectúe el producto escalar entre ambos. 
 
-Ref. [Prob1](prob1/prob1.cpp)
-
 ### Solución
+
+Ref. [Prob1](prob1/prob1.cpp)
 
 ~~~cpp
 int scal_prod(int v1[], int v2[], size_t sz)
@@ -68,6 +68,8 @@ Implémentese, asimismo, un programa principal que inicialice un vector y muestr
 
 ### Solución
 
+Ref. [Prob2](prob1/prob2.cpp)
+
 ~~~cpp
 size_t count_eq(double v[], int sz, double val, double tol)
 {
@@ -97,6 +99,7 @@ int main(void)
 ~~~
 
 ## Problema 3
+
 ### Enunciado
 
 1. Diséñese e impleméntese una función que cuente el número de elementos menores que el valor `val` dentro de un vector `double` con una tolerancial `tol`. 
@@ -110,6 +113,8 @@ size_t count_great(double v[], int sz, double val, double tol)
 ~~~
 
 ### Solución
+
+Ref. [Prob3](prob1/prob3.cpp)
 
 ~~~cpp
 size_t count_less(double v[], int sz, double val, double tol)
@@ -161,7 +166,9 @@ int main(void)
 ~~~
 
 ## Problema 4
+
 ### Enunciado
+
 1. Diseñar e implementar una función que sume todos los elementos de un vector `int`.
 2. Diseñar e implementar una función de cuente el número de elementos pares que hay dentro de un vector `int`. 
 3. Diseñar e implementar una función de cuente el número de elementos impares que hay dentro de un vector `int`. 
@@ -177,6 +184,8 @@ size_t cont_odd(int v[], size_t sz)
 
 
 ### Solución
+
+Ref. [Prob4](prob1/prob4.cpp)
 
 ~~~cpp
 using namespace std;
