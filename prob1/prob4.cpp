@@ -3,7 +3,6 @@
 #include <cstdlib>
 
 #define MAX_SZ  10
-#define MAX_VAL 50
 
 using namespace std;
 
@@ -43,6 +42,10 @@ size_t cont_odd(int v[], size_t sz)
 int main(void)
 {
 	int v[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	
+
+
+	cout << "Suma   : " << setw(4) << suma(v, MAX_SZ)      << endl;
+	cout << "Pares  : " << setw(4) << cont_pair(v, MAX_SZ) << endl;
+	cout << "Impares: " << setw(4) << cont_odd(v, MAX_SZ)  << endl;	
 }
 

@@ -12,6 +12,7 @@ El conjunto de las notas aquí incluidas **no constituyen** apuntes de la asigna
 ## Índice
 
 * Introducción a C++
+  * [Problemas de repaso](Problemas1.md)
   * [Punteros en C++](punteros.md)
   * [Clases](clases.md)
     * [Declarando una clase](definicion-de-clases.md)

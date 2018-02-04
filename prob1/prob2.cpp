@@ -8,12 +8,12 @@
 
 using namespace std;
 
-size_t count_eq(double v[], int sz, double val, double eps)
+size_t count_eq(double v[], int sz, double val, double tol)
 {
 	size_t count = 0;
 
 	for(size_t i = 0; i < sz; i ++)
-		if (fabs(v[i] - val) < eps)
+		if (fabs(v[i] - val) < told)
 			count ++;
 
 	return count;

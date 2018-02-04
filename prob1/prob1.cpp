@@ -24,8 +24,8 @@ int main(void)
 
 	for(size_t i = 0; i < MAX_SZ; i++){
 
-		v1[i] = rand() % (2 * MAX_VAL) - MAX_VAL;
-		v2[i] = rand() % (2 * MAX_VAL) - MAX_VAL;
+		v1[i] = rand() % (2 * (MAX_VAL + 1)) - MAX_VAL;
+		v2[i] = rand() % (2 * (MAX_VAL + 1)) - MAX_VAL;
 	}
 
 	for(size_t i = 0; i < MAX_SZ; i++)
