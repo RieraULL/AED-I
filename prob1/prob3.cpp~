@@ -13,7 +13,7 @@ size_t count_less(double v[], int sz, double val, double tol)
 	size_t count = 0;
 
 	for(size_t i = 0; i < sz; i ++)
-		if (v[i] - val < -tol)
+		if ((v[i] - val) < -tol)
 			count ++;
 
 	return count;
@@ -24,7 +24,7 @@ size_t count_great(double v[], int sz, double val, double tol)
 	size_t count = 0;
 
 	for(size_t i = 0; i < sz; i ++)
-		if (v[i] - val > tol)
+		if ((v[i] - val) > tol)
 			count ++;
 
 	return count;
