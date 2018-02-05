@@ -8,22 +8,22 @@
 
 using namespace std;
 
-size_t count_less(double v[], int sz, double val, double tol)
+int count_less(double v[], int sz, double val, double tol)
 {
-	size_t count = 0;
+	int count = 0;
 
-	for(size_t i = 0; i < sz; i ++)
+	for(int i = 0; i < sz; i ++)
 		if (v[i] - val < -tol)
 			count ++;
 
 	return count;
 }
 
-size_t count_great(double v[], int sz, double val, double tol)
+int count_great(double v[], int sz, double val, double tol)
 {
-	size_t count = 0;
+	int count = 0;
 
-	for(size_t i = 0; i < sz; i ++)
+	for(int i = 0; i < sz; i ++)
 		if (v[i] - val > tol)
 			count ++;
 
@@ -34,15 +34,15 @@ int main(void)
 {
 	double v1[] = {0.9, 0.99, 0.999, 0.9999, 1.0, 1.0001, 1.001, 1.01, 1.1};
 
-	const size_t c1 = count_less(v1, MAX_SZ, 1.0, 1E-4);
-	const size_t c2 = count_less(v1, MAX_SZ, 1.0, 1E-3);
-	const size_t c3 = count_less(v1, MAX_SZ, 1.0, 1E-2);
-	const size_t c4 = count_less(v1, MAX_SZ, 1.0, 1E-1);
+	const int c1 = count_less(v1, MAX_SZ, 1.0, 1E-4);
+	const int c2 = count_less(v1, MAX_SZ, 1.0, 1E-3);
+	const int c3 = count_less(v1, MAX_SZ, 1.0, 1E-2);
+	const int c4 = count_less(v1, MAX_SZ, 1.0, 1E-1);
 
-	const size_t c5 = count_great(v1, MAX_SZ, 1.0, 1E-4);
-	const size_t c6 = count_great(v1, MAX_SZ, 1.0, 1E-3);
-	const size_t c7 = count_great(v1, MAX_SZ, 1.0, 1E-2);
-	const size_t c8 = count_great(v1, MAX_SZ, 1.0, 1E-1);
+	const int c5 = count_great(v1, MAX_SZ, 1.0, 1E-4);
+	const int c6 = count_great(v1, MAX_SZ, 1.0, 1E-3);
+	const int c7 = count_great(v1, MAX_SZ, 1.0, 1E-2);
+	const int c8 = count_great(v1, MAX_SZ, 1.0, 1E-1);
 	
 	cout << "LESS  Tolerancia 1E-4: " << setw(2) << c1 << endl;
 	cout << "LESS  Tolerancia 1E-3: " << setw(2) << c2 << endl;

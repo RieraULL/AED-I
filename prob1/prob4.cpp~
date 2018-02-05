@@ -6,32 +6,32 @@
 
 using namespace std;
 
-int suma(int v[], int sz)
+int suma(int v[], size_t sz)
 {
 	int aux = 0;
 
-	for(int i = 0; i < sz; i ++)
+	for(size_t i = 0; i < sz; i ++)
 		aux = aux + v[i];
 
 	return aux;
 }
 
-int cont_pair(int v[], int sz)
+size_t cont_pair(int v[], size_t sz)
 {
-	int cont = 0;
+	size_t cont = 0;
 
-	for(int i = 0; i < sz; i ++)
+	for(size_t i = 0; i < sz; i ++)
 		 if (v[i] % 2 == 0)
 			cont ++;
 
 	return cont;
 }
 
-int cont_odd(int v[], int sz)
+size_t cont_odd(int v[], size_t sz)
 {
-	int cont = 0;
+	size_t cont = 0;
 
-	for(int i = 0; i < sz; i ++)
+	for(size_t i = 0; i < sz; i ++)
 		 if (v[i] % 2 != 0)
 			cont ++;
 
