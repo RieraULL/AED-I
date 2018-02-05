@@ -37,7 +37,7 @@ Veamos un ejemplo en la siguiente figura.
 
 La figura muestra un conjunto de celdas consecutivas que representan la memoria. Cada una de las celdas puede almacenar una valor (en este caso, a efectos de ilustración, una palabra de ocho bits). Ademas, cada celda tiene asocidada una dirección (que a efectos de ilustración, es de dieciséis bits). Los compiladores permiten que este mecanismo de bajo nivel sea transparente al programador, permitiendo el uso de tipos de datos y variables. 
 
-En la ilustración se define una variable `a` de tipo `int`. En este ordenador imaginario el tipo `int`requiere dos celdas de ocho bits. Además, se define la variable `b` de tipo `double`. Este compilador imaginario requiere cuatro palabras de ocho bits para definir un tipo `double`. 
+En la ilustración se define una variable `a` de tipo `int`. En este ordenador imaginario el tipo `int`requiere dos celdas de ocho bits. Además, se define la variable `b` de tipo `double`. Este compilador imaginario requiere ocho palabras de ocho bits para definir un tipo `double`. 
 
 El fragmento de programa que se muestra a continuación representa la definición de estas dos variables en lenguaje C++. Además, en un momento posterior se le asignan los valores `5` a la variable `a`, y `12.6` a la variable `b`. El valor `5` decimal se almacenará en `a` como el número hexadecimal `0x0005` en la celda de memoria definidas al efecto. Por otro lado, el número decimal `12.6` se almacenará siguiendo un formato de número real que nos inventamos: una *mantisa* de `126` (`0x0073` en hexadecimal), y un *exponente* de `-1` almacenado como `0xFFFF` en complemento a dos.   
 
