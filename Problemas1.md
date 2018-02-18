@@ -1,6 +1,7 @@
-# Problemas resuelto
+# Problemas resueltos I
 
 ## Problema 1
+
 ### Enunciado
 Construir una función que devuelva el [producto escalar](https://es.wikipedia.org/wiki/Producto_escalar) de dos vectores. La cabecera de la función debe ser:
 

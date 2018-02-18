@@ -24,3 +24,4 @@ El conjunto de las notas aquí incluidas **no constituyen** apuntes de la asigna
     * [Paso de parámetros](paso-de-parametros.md)
     * [Sobrecarga de operadores](sobrecarga-de-operadores.md)
   * [Un ejemplo complejo](un-ejemplo.md)
+  * [Problemas sobre clases](Problemas2.md)	

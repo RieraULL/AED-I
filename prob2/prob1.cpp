@@ -25,4 +25,6 @@ int main(void)
 	p2.write(cout);
 	cout << " es ";
 	cout << l1.distance(p2) << endl;
+
+	return 0;
 }
