@@ -22,7 +22,7 @@ namespace AEDA {
         ~point(void) {}
         
         int get_x(void) const {return x_;}
-        int get_y(void) const {return x_;}
+        int get_y(void) const {return y_;}
         
         void set(int x, int y) {x_ = x; y_ = y;}        
     };
