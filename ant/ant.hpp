@@ -42,10 +42,12 @@ namespace AEDA {
 			direction_ = d;
 		}
         
-        void turn_LEFT(void)  {direction_ = (direction_ + 3) % 4;}
+        void turn_LEFT(void)  {direction_ = (direction_ + 3) % NCARD;}
         
-        void turn_RIGHT(void) {direction_ = (direction_ + 1) % 4;}
+        void turn_RIGHT(void) {direction_ = (direction_ + 1) % NCARD;}
         
+	void go_back(void) {direction_ = (direction_ + 2) % NCARD;}
+		
 		void write(ostream& os) const {
 		
 			os << Direction_char[direction_];
