@@ -13,19 +13,18 @@ namespace AEDA {
 
 	const char Direction_char[] = {'^', 'v', '<', '>' };
 
-	class ant {
+	class ant: public point {
         
 	private:
-        point          position_;
 		unsigned short direction_;
 
 	public:
 		ant(void):
-        position_(),
+        point(),
 		direction_(N) {}
 
 		ant(const point& p, unsigned short d):
-        position_(p),
+        point(p),
 		direction_(d)
 		{
 			assert(direction_ <= W);
@@ -35,19 +34,12 @@ namespace AEDA {
 
 		unsigned short get_direction(void) const {return direction_;}
         
-        const point& get_position(void) const {return position_;}
-
 		void set_direction(unsigned short d){
 			
 			assert(direction_ <= W);
 			direction_ = d;
 		}
         
-        void set_position(const point& p) {
-                        
-            position_ = p;
-        }
-
 		void write(ostream& os) const {
 		
 			os << Direction_char[direction_];
