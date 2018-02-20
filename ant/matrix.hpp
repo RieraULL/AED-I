@@ -53,15 +53,15 @@ namespace AEDA {
 		        return n_;
 		    }
 		 
-			T& operator()(size_t i, size_t j)
-			{
-				return get(i,j);
-			}
+		    T& operator()(size_t i, size_t j)
+		    {
+			return get(i,j);
+		    }
 
-			const T& operator()(size_t i, size_t j) const
-			{
-				return get(i,j);
-			}
+		    const T& operator()(size_t i, size_t j) const
+		    {
+			return get(i,j);
+		    }
 
 	private:
 		    
