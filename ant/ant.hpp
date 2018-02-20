@@ -11,7 +11,7 @@ using namespace std;
 
 namespace AEDA {
 
-	enum       Direction          {  N,   E,   S,   W };
+	enum  Direction               {  N,   E,   S,   W };
 
 	const char Direction_char[] = {'^', '<', 'v', '>' };
 
@@ -22,11 +22,11 @@ namespace AEDA {
 
 	public:
 		ant(void):
-        point(),
+        	point(),
 		direction_(N) {}
 
 		ant(const point& p, unsigned short d):
-        point(p),
+        	point(p),
 		direction_(d)
 		{
 			assert(direction_ <= W);
@@ -42,11 +42,11 @@ namespace AEDA {
 			direction_ = d;
 		}
         
-        void turn_LEFT(void)  {direction_ = (direction_ + 3) % NCARD;}
+        	void turn_LEFT(void)  {direction_ = (direction_ + 3) % NCARD;}
         
-        void turn_RIGHT(void) {direction_ = (direction_ + 1) % NCARD;}
+        	void turn_RIGHT(void) {direction_ = (direction_ + 1) % NCARD;}
         
-	void go_back(void) {direction_ = (direction_ + 2) % NCARD;}
+		void go_back(void) {direction_ = (direction_ + 2) % NCARD;}
 		
 		void write(ostream& os) const {
 		
