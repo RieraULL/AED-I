@@ -11,9 +11,9 @@ using namespace std;
 
 namespace AEDA {
 
-	enum       Direction          {  N,   W,   S,   E };
+	enum       Direction          {  N,   E,   S,   W };
 
-	const char Direction_char[] = {'^', '>', 'v', '<' };
+	const char Direction_char[] = {'^', '<', 'v', '>' };
 
 	class ant: public point {
         
