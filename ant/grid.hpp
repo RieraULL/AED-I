@@ -7,6 +7,8 @@
 
 using namespace std;
 
+#define NCOLORS 2
+
 namespace AEDA {
     
     enum Background {BLACK, WHITE};
@@ -30,7 +32,7 @@ namespace AEDA {
         
         void set_WHITE(size_t i, size_t j) {matrix<unsigned short>::get(i,j) = WHITE;}
         
-        void change_color(size_t i, size_t j) {matrix<unsigned short>::get(i,j) = (matrix<unsigned short>::get(i,j) + 1) % 2;}
+        void change_color(size_t i, size_t j) {matrix<unsigned short>::get(i,j) = (matrix<unsigned short>::get(i,j) + 1) % NCOLORS;}
         
         void write(ostream& os, const ant& a) const {
         
