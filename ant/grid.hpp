@@ -11,7 +11,7 @@ namespace AEDA {
     
     enum Background {BLACK, WHITE};
 
-	const char Background_char[] = {'X', ' '};
+    const char Background_char[] = {'X', ' '};
     
     class grid: public matrix<unsigned short>
     {
