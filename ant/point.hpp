@@ -1,4 +1,7 @@
 #pragma once
+#include <cstdio>
+
+using namespace std;
 
 namespace AEDA {
  
@@ -6,25 +9,25 @@ namespace AEDA {
         
     private:
         
-        int x_;
-        int y_;
+        size_t x_;
+        size_t y_;
         
     public:
     
         point(void):
-        x_(0),
-        y_(0) {}
+        x_(1),
+        y_(1) {}
         
-        point(int x, int y):
+        point(size_t x, size_t y):
         x_(x),
         y_(y) {}
         
         ~point(void) {}
         
-        int get_x(void) const {return x_;}
-        int get_y(void) const {return y_;}
+        size_t get_x(void) const {return x_;}
+        size_t get_y(void) const {return y_;}
         
-        void set(int x, int y) {x_ = x; y_ = y;}        
+        void set(size_t x, size_t y) {x_ = x; y_ = y;}        
     };
    
 }
