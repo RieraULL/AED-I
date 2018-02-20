@@ -7,11 +7,13 @@
 
 using namespace std;
 
+#define NCARD 4
+
 namespace AEDA {
 
-	enum       Direction          {  N,   S,   E,   W };
+	enum       Direction          {  N,   W,   S,   E };
 
-	const char Direction_char[] = {'^', 'v', '<', '>' };
+	const char Direction_char[] = {'^', '>', 'v', '<' };
 
 	class ant: public point {
         
@@ -39,6 +41,10 @@ namespace AEDA {
 			assert(direction_ <= W);
 			direction_ = d;
 		}
+        
+        void turn_LEFT(void)  {direction_ = (direction_ + 3) % 4;}
+        
+        void turn_RIGHT(void) {direction_ = (direction_ + 1) % 4;}
         
 		void write(ostream& os) const {
 		
