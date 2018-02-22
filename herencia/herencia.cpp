@@ -89,7 +89,7 @@ class rectangle_t: public trapecio_t
 {
 public:
 	rectangle_t(const position_t& p, double Base, double h):
-	trapecio_t(p, 0, Base, h) {}
+	trapecio_t(p, Base, Base, h) {}
 
 	virtual ~rectangle_t(void) {}
 
