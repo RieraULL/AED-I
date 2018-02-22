@@ -13,8 +13,9 @@ namespace AEDA {
 
 	enum  Direction               {  N,   E,   S,   W };
 
-	const char Direction_char[] = {'^', '<', 'v', '>' };
-
+	const char Direction_char[] = {'^', '>', 'v', '<' };
+	const point_t move_direction[] = {point_t(-1, 0), point_t(0, 1), point_t(1, 0), point_t(0,-1)};
+	
 	class ant: public point {
         
 	private:
@@ -47,7 +48,7 @@ namespace AEDA {
         	void turn_RIGHT(void) {direction_ = (direction_ + 1) % NCARD;}
         
 		void go_back(void) {direction_ = (direction_ + 2) % NCARD;}
-		
+		void go(void) {point_t::add(move_direction[direction_]);}
 		void write(ostream& os) const {
 		
 			os << Direction_char[direction_];
