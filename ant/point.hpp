@@ -28,6 +28,7 @@ namespace AEDA {
         size_t get_y(void) const {return y_;}
         
         void set(size_t x, size_t y) {x_ = x; y_ = y;}        
+        void add(const point_t& p) {x_ += p.x_; y_ += p.y_;}
     };
    
 }
