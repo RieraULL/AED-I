@@ -4,17 +4,25 @@
 #include <iostream>
 
 #include "point.hpp"
+#include "grid.hpp"
 
 using namespace std;
 
 #define NCARD 4
+#define PLUS_NINETY_DEG     (NCARD/4)
+#define MINUS_NINETY_DEG    (2*NCARD/3)
+ 
+#define PLUS_FORTYFIVE_DEG  (NCARD/8)    // NCARD  8
+#define MINUS_FORTYFIVE_DEG (NCARD - 1)  // NCARD  8
+
+#define BACK                (NCARD/2)
 
 namespace AEDA {
 
-	enum  Direction               {  N,   E,   S,   W };
+	enum  Direction                {           N,           E,          S,           W };
 
-	const char Direction_char[] = {'^', '>', 'v', '<' };
-	const point_t move_direction[] = {point_t(-1, 0), point_t(0, 1), point_t(1, 0), point_t(0,-1)};
+	const char Direction_char[] =  {         '^',         '>',         'v',        '<' };
+	const point move_direction[] = {point(-1, 0), point(0, 1), point(1, 0), point(0,-1)};
 	
 	class ant: public point {
         
@@ -33,31 +41,44 @@ namespace AEDA {
 			assert(direction_ <= W);
 		}
 
-		~ant(void) {}
-
-		unsigned short get_direction(void) const {return direction_;}
+		virtual ~ant(void) {}
         
-		void set_direction(unsigned short d){
-			
-			assert(direction_ <= W);
-			direction_ = d;
-		}
-        
-        	void turn_LEFT(void)  {direction_ = (direction_ + 3) % NCARD;}
-        
-        	void turn_RIGHT(void) {direction_ = (direction_ + 1) % NCARD;}
-        
-		void go_back(void) {direction_ = (direction_ + 2) % NCARD;}
-		void go(void) {point_t::add(move_direction[direction_]);}
+        	void turn_LEFT(void)  {direction_ = (direction_ + MINUS_NINETY_DEG) % NCARD;}
+        	void turn_RIGHT(void) {direction_ = (direction_ + PLUS_NINETY_DEG) % NCARD;}
+		void turn_back(void)  {direction_ = (direction_ + BACK) % NCARD;}
+            
+            void go_back(void) {turn_back(); go();}
+		void go(void) {point::add(move_direction[direction_]);}
+            
 		void write(ostream& os) const {
-		
 			os << Direction_char[direction_];
-		}		
-	};
-}
+		}	
 
-ostream& operator<<(ostream& os, const AEDA::ant& a)
-{
-	a.write(os);
-	return os;
+            virtual void move(grid& G)
+            {
+             /*     if (G.is_in_bound(p))
+                        go_back();
+                  else
+                        go();*/
+            }
+	};
+
+      class ant_A: public ant
+      {
+      public:
+            ant_A(const point& p, unsigned short d):
+            ant(p, d) {}
+            
+            virtual ~ant_A(void) {}
+            
+            virtual void move(grid& G)
+            {
+             /*     if (G.is_in_bound(p))
+                        go_back();
+                  else
+                        go();*/
+            }
+            
+      };
+
 }

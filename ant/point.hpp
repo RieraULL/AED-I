@@ -9,26 +9,26 @@ namespace AEDA {
         
     private:
         
-        size_t x_;
-        size_t y_;
+        size_t row_;
+        size_t col_;
         
     public:
     
         point(void):
-        x_(1),
-        y_(1) {}
+        row_(1),
+        col_(1) {}
         
-        point(size_t x, size_t y):
-        x_(x),
-        y_(y) {}
+        point(size_t row, size_t col):
+        row_(row),
+        col_(col) {}
         
         ~point(void) {}
         
-        size_t get_x(void) const {return x_;}
-        size_t get_y(void) const {return y_;}
+        size_t get_row(void) const {return row_;}
+        size_t get_col(void) const {return col_;}
         
-        void set(size_t x, size_t y) {x_ = x; y_ = y;}        
-        void add(const point_t& p) {x_ += p.x_; y_ += p.y_;}
+        void set(size_t row, size_t col) {row_ = row; col_ = col;}        
+        void add(const point& p) {row_ += p.row_; col_ += p.col_;}
     };
    
 }
