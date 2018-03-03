@@ -22,7 +22,7 @@ Veamos un ejemplo de Triángulo de Pascal.
 ```
 Nótese que el nivel i-ésimo de este triángulo nos permitirá calcular los números combinatorios del número i - 1. Es decir, para el caso de la octava fila, el primer elemento corresponde a C(7,0), el segundo a C(7,1), el tercero a C(7,2), y así sucesivamente. Léase el artículo [2] para más detalle.
 
-El Triángulo de Pascal está caracterizado por el número máximo que almacena. Por lo tanto la clase ```pascal_triangle_t``` contendrá como atributos un vector de elementos del tipo ```binomial_number_t```, y un entero sin signo denotando el número máximo del triángulo. Es decir, si el triángulo tiene ocho filas (como el triángulo del ejemplo) el número máximo será el siete. El tipo de dato ```binomial_number_t``` se definirá de la siguiente manera:
+El Triángulo de Pascal está caracterizado por el número de niveles que almacena. Por lo tanto la clase ```pascal_triangle_t``` contendrá como atributos un vector de elementos del tipo ```binomial_number_t```, y un entero sin signo denotando el número de niveles del triángulo. El tipo de dato ```binomial_number_t``` se definirá de la siguiente manera:
 
 ```cpp
 typedef unsigned long binomial_number_t;
@@ -37,13 +37,13 @@ private:
 
 Una vez definidos, en la sección ```private:```, los dos atributos que constituyen la clase ```pascal_triangle_t``` debemos definir en la sección pública el constructor y el destructor.
 
-El constructor, al que le pasaremos como parámetro el número máximo del triángulo ```n```, debe inicializar el atributo ```n_``` y construir el vector asociado al triángulo ¿Cuántos elementos tiene este triángulo? 
+El constructor, al que le pasaremos como parámetro el número de niveles del triángulo ```n```, debe inicializar el atributo ```n_``` y construir el vector asociado al triángulo.
 
-Como se puede ver en la primera figura del enlace [2], si queremos construir un triángulo para un número máximo ```n```, el triángulo debe tener ```n + 1``` niveles. Así en el nivel i-ésimo el triángulo tendrá i elementos. De esa manera, si queremos construir un vector que considere un número máximo n, nuestro vector debe tener el tamaño 1 + 2 + ... + n + (n + 1). Es decir la suma de la serie anterior. 
+Como se puede ver en la primera figura del artículo de Wikipedia [2], si queremos construir un triángulo para un número ```n```, el triángulo debe tener ```n + 1``` niveles. Así en el nivel i-ésimo el triángulo tendrá i elementos. De esa manera, si queremos construir un vector que considere un número máximo n, nuestro vector debe tener el tamaño 1 + 2 + ... + n + (n + 1). Es decir la suma de la serie anterior. 
 
-Con el propósito de hacer este cálculo en el constructor, y en estadíos posteriores de nuestro trabajo, desarrollaremos un método privado de la clase ```pascal_triangle_t``` (que podríamos denominar ```S(size_t k)``` que devuelva la suma de k primeros elementos de una serie.
+Con el propósito de hacer este cálculo en el constructor, y en estadíos posteriores de nuestro trabajo, desarrollaremos un método privado de la clase ```pascal_triangle_t``` (que podríamos denominar ``` size_t S(size_t k)``` que devuelva la suma de k primeros elementos de una serie.
 
-De esta manera, inicializaremos la longitud del vector, es decir el constructor del vector con el valor devuelto por ```S(n + 1)```.
+De esta manera, inicializaremos la longitud del vector, es decir el constructor del vector con el valor devuelto por ```S(n)```.
 
 Esta clase deberá contener un método ```binomial_number_t at(size_t i, size_t j) const``` que devuelva el valor del triángulo en cualquier posición válida del mismo. Si la posición no fuera válida, debe mostrar un mensaje de error.
 
