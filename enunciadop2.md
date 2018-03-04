@@ -64,7 +64,9 @@ El alumno debe mostrar las clases ```vector_t```, ```pascal_triangle_t```, ```co
 3. La posibilidad de obtener una calificación superior a 8 será evaluada por el profesor, teniendo en cuenta la calidad del código, capacidad para responder a preguntas o el desarrollo de funcionalidades adicionales más complejas.  
 
 ### Nota
-El envío de una práctica a través del aula virtual no presupondrá su entrega. 
+1. El envío de una práctica a través del aula virtual no presupondrá su entrega. 
+
+2. El objeto de la parte práctica de la asignatura es evaluar la capacidad y destreza del alumnado para resolver problemas mediante algoritmos. La realización del trabajo descrito en el enunciado es sólo uno de los aspectos a evaluar.
 
 ## Referencias 
 
