@@ -47,6 +47,8 @@ De esta manera, inicializaremos la longitud del vector, es decir el constructor 
 
 Esta clase deberá contener un método ```binomial_number_t at(size_t i, size_t j) const``` que devuelva el valor del triángulo en cualquier posición válida del mismo. Si la posición no fuera válida, debe mostrar un mensaje de error.
 
+Adicionalmente, se debe incluir un procedimiento que muestre por pantalla el triángulo. De esta manera, el alumno será capaz de comprobar si ha sido construido de forma correcta.
+
 Una vez definida e implementada la clase ```pascal_triangle_t``` declararemos e implementaremos la clase ```combinatorial_t```. Esta clase tendrá como único atributo un elemento de la clase ```pascal_triangle_t```. El constructor debe indicar el número máximo para el cual se quiere calcular un número combinatorio. Y además del constructor y destructor, debe contener un método ```binomial_number_t C(size_t i, size_t j) const``` que devuelva el valor del número combinatorio.
 
 Finalmente, se debe implementar un programa principal en el que muestre la funcionalidad de las clase.
