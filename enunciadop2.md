@@ -17,7 +17,7 @@ typedef unsigned long binomial_number_t;
 ```
 Es decir, se redefine un entero largo sin signo.
 
-## Fase II
+## Fase II
 
 Desarrollo de la clase ```pascal_triangle_t```.
 
