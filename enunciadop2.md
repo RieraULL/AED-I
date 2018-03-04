@@ -15,6 +15,7 @@ Para empezar a construir la clase ```pascal_triangle_t```  necesitaremos una est
 ```cpp
 typedef unsigned long binomial_number_t;
 ```
+Es decir, se redefine un entero largo sin signo.
 
 ## Fase II
 
