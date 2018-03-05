@@ -53,8 +53,6 @@ Una vez definidos, en la sección ```private:```, los dos atributos que constitu
 
 El constructor, al que le pasaremos como parámetro el número de niveles del triángulo ```n```, debe inicializar el atributo ```n_``` y construir el vector asociado al triángulo.
 
-El nivel i-ésimo el triángulo tendrá i elementos. De esa manera, si queremos construir un vector que considere un número máximo n, nuestro vector debe tener el tamaño 1 + 2 + ... + n + (n + 1). Es decir la suma de la serie anterior. 
-
 Con el propósito de hacer este cálculo en el constructor, y en estadíos posteriores de nuestro trabajo, desarrollaremos un método privado de la clase ```pascal_triangle_t``` (que podríamos denominar ``` size_t S(size_t k)``` que devuelva la suma de k primeros elementos de una serie.
 
 De esta manera, inicializaremos la longitud del vector, es decir el constructor del vector con el valor devuelto por ```S(n)```.
