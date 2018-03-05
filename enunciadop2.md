@@ -74,7 +74,6 @@ public:
       binomial_number_t at(size_t i, size_t j) const;
 
 private:
-      size_t pos(size_t i, size_t j) const;
       inline size_t S(size_t n) const;
 
 ~~~
