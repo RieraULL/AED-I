@@ -5,6 +5,7 @@
 
 #include "point.hpp"
 #include "grid.hpp"
+#include "color.hpp"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ enum  Direction                {           N,           E,          S,          
 const char Direction_char[] =  {         '^',         '>',         'v',        '<' };
 const point move_direction[] = {point(-1, 0), point(0, 1), point(1, 0), point(0,-1)};
 
-enum Turn                      {L, R, B};
+enum Turn                      {L, R};
 
 
 class ant: public point
@@ -38,7 +39,7 @@ private:
 private:
     unsigned short direction_;
 
-    const turn_func_t turn_function[3] = {&ant::turn_LEFT, &ant::turn_RIGHT, &ant::turn_BACK};
+    const turn_func_t turn_function[2] = {&ant::turn_LEFT, &ant::turn_RIGHT};
 
 public:
     ant(void):
@@ -61,11 +62,16 @@ public:
         os << Direction_char[direction_];
     }
 
-    virtual void move(grid& G) {
+    virtual void move(color_t c) {
         
-        change_direction(G.get_color(*this));
+        change_direction(c);
         go();
         
+    }
+    
+        void turn_BACK(void)
+    {
+        direction_ = (direction_ + BACK) % NCARD;
     }
 
 protected:
@@ -80,16 +86,14 @@ protected:
         direction_ = (direction_ + PLUS_NINETY_DEG) % NCARD;
     }
 
-    void turn_BACK(void)
+    void change_direction(color_t c)
     {
-        direction_ = (direction_ + BACK) % NCARD;
-    }
-
-    void change_direction(int d)
-    {
+        const int d = get_dir(c);
         (this->*turn_function[d])();
     }
 
+    virtual int get_dir(color_t c) const = 0;
+    
     void go(void)
     {
         point::add(move_direction[direction_]);
@@ -111,6 +115,12 @@ public:
         ant(p, d) {}
 
     virtual ~ant_DDII(void) {}
+    
+  protected:  
+    virtual int get_dir(color_t c) const 
+    {
+        return Direction[c];
+     }
 
 };
 
