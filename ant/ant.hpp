@@ -13,9 +13,6 @@ using namespace std;
 #define PLUS_NINETY_DEG     (NCARD/4)
 #define MINUS_NINETY_DEG    (2*NCARD/3)
 
-#define PLUS_FORTYFIVE_DEG  (NCARD/8)    // NCARD  8
-#define MINUS_FORTYFIVE_DEG (NCARD - 1)  // NCARD  8
-
 #define BACK                (NCARD/2)
 
 namespace AEDA
