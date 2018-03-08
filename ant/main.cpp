@@ -1,15 +1,18 @@
 #include <iostream>
 
-#include "config.hpp"
-#include "machine.hpp"
-#include "point.hpp"
+//#include "config.hpp"
+//#include "machine.hpp"
+//#include "point.hpp"
+
+#include "ant.hpp"
+#include "grid.hpp"
 
 using namespace std;
 
 
 int main(void)
 {
-    AEDA::config conf;
+    /*AEDA::config conf;
     
     conf.initial_position_  = AEDA::point(50,50);
     conf.initial_direction_ = AEDA::N;
@@ -17,5 +20,6 @@ int main(void)
     conf.cols_              = 100;
     conf.max_iterations_    = 99999;
     
-	AEDA::machine M(conf);    
+	AEDA::machine M(conf);    */
+    
 }

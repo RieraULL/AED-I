@@ -3,7 +3,9 @@
 #define NCOLORS 2
 
 namespace AEDA {
+    
+    typedef unsigned short color_t;
       
-    enum Background                {BLACK, WHITE};
-    const char Background_char[] = {  'X',   ' '};      
+    enum Background                { WHITE , BLACK, RED, GREEN};
+    const char Background_char[] = {   ' ',    'B', 'R',   'G'};      
 }

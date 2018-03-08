@@ -8,14 +8,16 @@
 
 using namespace std;
 
+
+
 namespace AEDA
 {
 
-class grid: protected matrix<unsigned short>
+class grid: protected matrix<color_t>
 {
 public:
       grid(size_t m, size_t n):
-            matrix<unsigned short>(m, n)
+            matrix<color_t>(m, n)
       {
             init();
       }
@@ -29,19 +31,25 @@ public:
 
       void resize(size_t m, size_t n)
       {
-            matrix<unsigned short>::resize(m, n);
+            matrix<color_t>::resize(m, n);
       }
 
       void change_color(const point& p)
       {
-            matrix<unsigned short>::at(p.get_row(), p.get_col()) = (matrix<unsigned short>::at(p.get_row(), p.get_col()) + 1) % NCOLORS;
+            matrix<color_t>::at(p.get_row(), p.get_col()) = (matrix<color_t>::at(p.get_row(), p.get_col()) + 1) % NCOLORS;
+      }
+      
+      color_t get_color(const point& p){
+          
+          return matrix<color_t>::at(p.get_row(), p.get_col());
+          
       }
 
 protected:
       virtual void init(void)
       {
-            for(size_t i = 1; i <= matrix<unsigned short>::get_m(); i++)
-                  for(size_t j = 1; j <= matrix<unsigned short>::get_n(); j++)
+            for(size_t i = 1; i <= matrix<color_t>::get_m(); i++)
+                  for(size_t j = 1; j <= matrix<color_t>::get_n(); j++)
                         matrix<unsigned short>::at(i,j) = WHITE;
       }
 };
