@@ -155,4 +155,13 @@ int main(void)
 
 En el programa principal se definen dos puntos y una recta, mostrándose por pantalla la distancia de la recta a ambos puntos.
 
+## Problema 2
+
+### Enunciado
+
+Construir una clase `vector_t` que represente un tipo de dato vector indexado en entre sus límites izquierdo y derecho. Impleméntese, asimismo, un procedimiento que sume dos vectores de este tipo, dando lugar a un nuevo vector que tiene como límite izquierdo el menor de los límites izquierdos de los vectores a sumar, y como límite derecho el mayor de los límites derechos. 
+
+### Solución
+
+Véase una posible solución en [Prob2](prob2/bounded_vector.cpp)
 
