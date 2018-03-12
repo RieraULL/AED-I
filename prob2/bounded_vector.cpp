@@ -88,22 +88,19 @@ public:
             return v_[pos - l_];
       }
       
-      void suma(const vector_t<T>& v, vector_t<T>& w) const
+      void suma(const vector_t<T>& v, const vector_t<T>& w)
       {
-            const int new_l = (l_ < v.l_)? l_: v.l_;
-            const int new_r = (r_ > v.r_)? r_: v.r_;
+            l_ = (v.l_ < w.l_)? v.l_: w.l_;
+            r_ = (v.r_ > w.r_)? v.r_: w.r_;
             
-            w.l_ = new_l;
-            w.r_ = new_r;
+            resize();
+            init(0);
             
-            w.resize();
-            w.init(0);
-            
-            for(int i = l_; i <= r_; i++)
-                  w.at(i) = at(i);
-                  
             for(int i = v.l_; i <= v.r_; i++)
-                  w.at(i) += v.at(i);
+                  at(i) = v.at(i);
+                  
+            for(int i = w.l_; i <= w.r_; i++)
+                  at(i) += w.at(i);
       }
 
       const T& operator[](int pos) const
@@ -182,7 +179,7 @@ int main(void)
       
       vector_t<int> x;
       
-      v.suma(w, x);
+      x.suma(v, w);
       
       x.write(cout);
       cout << endl;     
