@@ -72,7 +72,7 @@ public:
       
       void init(const T& val)
       {
-            for(int i = l_; i < r_; i++)
+            for(int i = l_; i <= r_; i++)
                   at(i) = val;
       }
 
