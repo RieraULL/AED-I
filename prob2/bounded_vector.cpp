@@ -45,6 +45,9 @@ public:
       r_(v.r_)
       {
             build();
+            
+            for(int i = l_; i <= r_; i++)
+                  at(i) = v.at(i);
       }
 
       ~vector_t(void)
