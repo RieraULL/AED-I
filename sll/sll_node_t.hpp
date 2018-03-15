@@ -19,8 +19,7 @@ namespace AED {
 		void set_next(sll_node_t<T>* next);
 		sll_node_t<T>* get_next(void) const;
 
-		void set_data(const T& data);
-		T get_data(void) const;
+		const T& get_data(void) const;
 
 		ostream& write(ostream& os) const;
 	};
@@ -55,14 +54,9 @@ namespace AED {
 		return next_;
 	}
 
-	template <class T>
-	void sll_node_t<T>::set_data(const T& data)
-	{
-		data_ = data;
-	}
 
 	template <class T>
-	T sll_node_t<T>::get_data(void) const
+	const T& sll_node_t<T>::get_data(void) const
 	{
 		return data_;
 	}
