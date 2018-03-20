@@ -39,23 +39,31 @@ public:
 		crea_vector();
 	}
 
-	int get_sz(void) const
+	int size(void) const
 	{
 		return sz_;
 	}
 
-	T get_v(int pos) const{
+	const T& at(int pos) const{
 		
 		assert((pos < sz_) && ((pos >= 0)));
 
 		return v_[pos];
 	}
 
-	T& get_set_v(int pos){
+	T& at(int pos){
 
 		assert((pos < sz_) && ((pos >= 0)));
 
 		return v_[pos];
+	}
+	
+	const T& operator[](int pos) const {
+		return at(pos);
+	}
+	
+	T& operator[](int pos) {
+		return at(i);
 	}
 
 	ostream& write(ostream& os) const{
