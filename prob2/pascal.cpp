@@ -77,6 +77,7 @@ public:
     void write(ostream& os) const;
 
     binomial_number_t at(size_t i, size_t j) const;
+    binomial_number_t& at(size_t i, size_t j);
 
 private:
     void build_triangle(size_t n);
@@ -114,13 +115,18 @@ binomial_number_t pascal_triangle_t::at(size_t i, size_t j) const
     return v_.at(pos(i, j));
 }
 
+binomial_number_t& pascal_triangle_t::at(size_t i, size_t j)
+{
+    return v_.at(pos(i, j));
+}
+
 void pascal_triangle_t::build_triangle(size_t n)
 {
-    v_.at(pos(0, 0)) = 1;
+    at(0, 0) = 1;
     for(size_t i = 1; i < n; i++) {
         init_row(i);
         for(size_t j = 1; j < i ; j++)
-            v_.at(pos(i, j)) = v_.at(pos(i - 1, j - 1)) + v_.at(pos(i - 1, j));
+            at(i, j) = at(i - 1, j - 1) + at(i - 1, j);
     }
 }
 
@@ -138,8 +144,8 @@ size_t pascal_triangle_t::S(size_t n) const
 
 void pascal_triangle_t::init_row(size_t i)
 {
-    v_.at(pos(i, 0)) = 1;
-    v_.at(pos(i, i)) = 1;
+    at(i, 0) = 1;
+    at(i, i) = 1;
 }
 
 
