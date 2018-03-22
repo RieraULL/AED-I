@@ -169,16 +169,16 @@ Véase una posible solución en [Prob2](prob2/bounded_vector.cpp)
 
 ### Enunciado
 
-Triángulo de Pascal y números combinatorios
+### Triángulo de Pascal y números combinatorios
 
-El objetivo de esta práctica es construir un solucionador de números combinatorios a partir del Triángulo de Pascal [2].
+El objetivo de esta problema es construir un solucionador de números combinatorios a partir del Triángulo de Pascal [2].
 
 La estructura fundamental para abordar el problema es una clase que represente un Triángulo de Pascal. Denominaremos a esta clase `pascal_triangle_t`.
 
-Desarrollaremos la práctica en tres fases.
-Fase I: Desarrollo de la clase `vector_t`
+Desarrollaremos el problema en tres fases.
+#### Fase I: Desarrollo de la clase `vector_t`
 
-Para empezar a construir la clase pascal_triangle_t necesitaremos una estructura auxiliar tipo vector, y con ese fin construiremos una clase denominada vector_t. Podremos hacer uso de la clase vector_t que se encuentra en nuestras notas de clase (puedes encontrar esta clase comentada en el enlace [1]), siempre y cuando comprendamos correctamente su funcionamiento. El vector almacenará elementos de tipo binomial_number_t. El tipo de dato binomial_number_t se definirá de la siguiente manera:
+Para empezar a construir la clase `pascal_triangle_t` necesitaremos una estructura auxiliar tipo vector, y con ese fin construiremos una clase denominada `vector_t`. Podremos hacer uso de la clase `vector_t` que se encuentra en nuestras notas de clase (puedes encontrar esta clase comentada en el enlace [1]), siempre y cuando comprendamos correctamente su funcionamiento. El vector almacenará elementos de tipo `binomial_number_t`. El tipo de dato `binomial_number_t` se definirá de la siguiente manera:
 
 ~~~cpp
 typedef unsigned long binomial_number_t;
@@ -187,9 +187,9 @@ typedef unsigned long binomial_number_t;
 Es decir, se redefine un entero largo sin signo.
 
 
-Fase II: Desarrollo de la clase `pascal_triangle_t`
+#### Fase II: Desarrollo de la clase `pascal_triangle_t`
 
-De manera similar al caso estudiado en la práctica anterior, en el que hemos representado una matriz bidimensional mediante un vector unidimensional, representaremos el triángulo sobre un vector. Para ello, debemos encontrar una correspondencia entre cada elemento `(i,j)` del Triángulo de Pascal, y su posición correspondiente `k` en el vector sobre el que se almacenará.
+Representaremos el triángulo sobre un vector. Para ello, debemos encontrar una correspondencia entre cada elemento `(i , j)` del Triángulo de Pascal, y su posición correspondiente `k` en el vector sobre el que se almacenará.
 
 Veamos un ejemplo de Triángulo de Pascal de 6 niveles:
 ~~~
@@ -209,7 +209,7 @@ Este triángulo se almacenará en un vector de la siguiente manera:
 
 Es decir, un nivel tras otro, de forma consecutiva.
 
-El Triángulo de Pascal está caracterizado también por el número de niveles que almacena. Por lo tanto la clase pascal_triangle_t contendrá como atributos un vector de elementos del tipo `binomial_number_t` (véase fase anterior), y un entero sin signo denotando el número de niveles del triángulo. De esta manera, La sección de los atributos podría quedar de la siguiente manera:
+El Triángulo de Pascal está caracterizado también por el número de niveles que almacena. Por lo tanto la clase `pascal_triangle_t` contendrá como atributos un vector de elementos del tipo `binomial_number_t` (véase fase anterior), y un entero sin signo denotando el número de niveles del triángulo. De esta manera, La sección de los atributos podría quedar de la siguiente manera:
 
 ~~~cpp
 private:
@@ -217,20 +217,20 @@ private:
         const size_t n_;
 ~~~
 
-Una vez definidos, en la sección private, los dos atributos que constituyen la clase pascal_triangle_t debemos definir en la sección pública el constructor y el destructor.
+Una vez definidos, en la sección private, los dos atributos que constituyen la clase `pascal_triangle_t` debemos definir en la sección pública el constructor y el destructor.
 
-El constructor, al que le pasaremos como parámetro el número de niveles del triángulo n, debe inicializar el atributo n_ y construir el vector asociado al triángulo.
+El constructor, al que le pasaremos como parámetro el número de niveles del triángulo `n`, debe inicializar el atributo `n_` y construir el vector asociado al triángulo.
 
-El nivel i−ésimo el triángulo tendrá i elementos. De esa manera, si queremos construir un vector que considere un número máximo `n`, nuestro vector debe tener el tamaño `1+2+...+n`. Es decir la suma de la serie anterior.
+El nivel i−ésimo el triángulo tendrá `i` elementos. De esa manera, si queremos construir un vector que considere un número máximo `n`, nuestro vector debe tener el tamaño `1 + 2 + ... + n`. Es decir la suma de la serie anterior.
 
-Con el propósito de hacer este cálculo en el constructor, y en estadíos posteriores de nuestro trabajo, desarrollaremos un método privado de la clase pascal_triangle_t (que podríamos denominar `size_t S(size_t k)` que devuelva la suma de `k` primeros elementos de una serie.
+Con el propósito de hacer este cálculo en el constructor, y en estadíos posteriores de nuestro trabajo, desarrollaremos un método privado de la clase `pascal_triangle_t` (que podríamos denominar `size_t S(size_t k)` que devuelva la suma de `k` primeros elementos de una serie.
 
 De esta manera, inicializaremos la longitud del vector, es decir el constructor del vector, con el valor devuelto por `S(n)`.
 
 La construcción del triángulo implica rellenarlo con los valores adecuados. Para ello, téngase en cuenta que la entrada `(i,j)`
 del triángulo es el resultado de la suma de las entradas `(i − 1,j − 1) + (i − 1, j)`.
 
-La clase pascal_triangle_t deberá contener un método binomial_number_t at(size_t i, size_t j) const que devuelva el valor del triángulo en cualquier posición válida del mismo. Si la posición no fuera válida, debe mostrar un mensaje de error.
+La clase pascal_triangle_t deberá contener un método `binomial_number_t at(size_t i, size_t j) const` que devuelva el valor del triángulo en cualquier posición válida del mismo. Si la posición no fuera válida, debe mostrar un mensaje de error.
 
 Adicionalmente, se debe incluir un procedimiento que muestre por pantalla el triángulo. De esta manera, el alumno será capaz de comprobar si ha sido construido de forma correcta.
 
@@ -249,9 +249,9 @@ private:
       inline size_t S(size_t n) const;
 ~~~
 
-Fase III: Desarrollo de la clase binomial_t
+#### Fase III: Desarrollo de la clase `binomial_t`
 
-Nótese que el nivel i−ésimo de este triángulo nos permitirá calcular los números combinatorios del número i−1. Es decir, para el caso del octavo nivel, el primer elemento corresponde a `C(7,0)`, el segundo a `C(7,1)`, el tercero a `C(7,2)`, y así sucesivamente. Léase el artículo [2] para más detalle.
+Nótese que el nivel i−ésimo de este triángulo nos permitirá calcular los números combinatorios del número `i − 1`. Es decir, para el caso del octavo nivel, el primer elemento corresponde a `C(7,0)`, el segundo a `C(7,1)`, el tercero a `C(7,2)`, y así sucesivamente. Léase el artículo [2] para más detalle.
 
 Una vez definida e implementada la clase `pascal_triangle_t` declararemos e implementaremos la clase `binomial_t`. Esta clase tendrá como único atributo un elemento de la clase `pascal_triangle_t` de la siguiente manera:
 
@@ -282,4 +282,4 @@ Referencias
 
 ### Solucíon
 
-Véase una posible solución en [Prob2](prob2/pascal.cpp)
+Véase una posible solución en [Prob3](prob2/pascal.cpp)
