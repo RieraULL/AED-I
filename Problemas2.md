@@ -280,6 +280,6 @@ Referencias
 [2] https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Pascal
 
 
-### Solucíon
+### Solución
 
 Véase una posible solución en [Prob3](prob2/pascal.cpp)
