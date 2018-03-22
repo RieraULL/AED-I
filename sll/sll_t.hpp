@@ -14,7 +14,7 @@ namespace AED {
 
 	public:
 		sll_t(void);
-		virtual ~sll_t(void);
+		~sll_t(void);
 
 		void insert_head(sll_node_t<T>* n);
 		sll_node_t<T>* extract_head(void);
