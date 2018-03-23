@@ -230,7 +230,7 @@ De esta manera, inicializaremos la longitud del vector, es decir el constructor 
 La construcción del triángulo implica rellenarlo con los valores adecuados. Para ello, téngase en cuenta que la entrada `(i,j)`
 del triángulo es el resultado de la suma de las entradas `(i − 1,j − 1) + (i − 1, j)`.
 
-La clase pascal_triangle_t deberá contener un método `binomial_number_t at(size_t i, size_t j) const` que devuelva el valor del triángulo en cualquier posición válida del mismo. Si la posición no fuera válida, debe mostrar un mensaje de error.
+La clase `pascal_triangle_t` deberá contener un método `binomial_number_t at(size_t i, size_t j) const` que devuelva el valor del triángulo en cualquier posición válida del mismo. Si la posición no fuera válida, debe mostrar un mensaje de error.
 
 Adicionalmente, se debe incluir un procedimiento que muestre por pantalla el triángulo. De esta manera, el alumno será capaz de comprobar si ha sido construido de forma correcta.
 
