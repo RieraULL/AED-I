@@ -5,6 +5,7 @@ using namespace std;
 
 #include "sll_node_t.hpp"
 
+<<<<<<< HEAD
 namespace AED
 {
 
@@ -174,5 +175,6 @@ void sll_t<T>::write_reverse(ostream& os, sll_node_t<T>* n)
       else
             os << n->get_data() << " ";
 }
+
 
 }
