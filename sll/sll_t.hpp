@@ -5,7 +5,6 @@ using namespace std;
 
 #include "sll_node_t.hpp"
 
-<<<<<<< HEAD
 namespace AED
 {
 
