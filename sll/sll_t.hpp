@@ -71,7 +71,7 @@ void sll_t<T>::insert_tail(sll_node_t<T>* n)
       if (prev == NULL)
             insert_head(n);
       else
-            insert_after(prev);
+            insert_after(prev, n);
 }
 
 template <class T>
