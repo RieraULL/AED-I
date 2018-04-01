@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "sll_t.hpp"
+#include "lista_char_t.hpp"
 
 #define N_CHARS 26
 
@@ -59,6 +60,22 @@ int main(void)
 
 	lista.write(cout);
 	cout << endl;
+      
+      lista_char_t lista_char;
+      
+	for(int i = 0; i < N_CHARS; i++)
+		lista_char.insert_head('a' + i); 
+
+      lista_char.write(cout);
+      cout << endl;
+
+      while(!lista_char.empty()){
+            
+            cout << lista_char.extract_head() << endl;
+            
+            lista_char.write(cout);
+            cout << endl;
+      }
 
 	return 0;
 }

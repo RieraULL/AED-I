@@ -8,9 +8,9 @@ namespace AED {
 	template <class T>
 	class sll_node_t {
 	private:
-		sll_node_t<T>* next_;
 		T              data_;
-
+            sll_node_t<T>* next_;
+            
 	public:
 		sll_node_t(void);
 		sll_node_t(T data);
