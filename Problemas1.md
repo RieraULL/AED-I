@@ -293,5 +293,25 @@ void biggest_2_end(vector_t<T>& v, int end_v)
 ~~~
 Finalmente, la función `biggest_2_end` mueve el mayor de los elementos situado entre las posiciones `0` y `end_v` a la posición `end_v`.
 
+## Problema 6
+
+### Enunciado
+
+Diseñar e implementar una función que ordene en orden no decreciente utilizando la función desarrollada en el problema 5.
+
+
+### Solución
+
+Ref. [Prob5](prob1/prob5.cpp)
+
+~~~cpp
+template<class T>
+void bubble_sort(vector_t<T>& v)
+{
+	for(int i = v.size() - 1; i >= 1; i--) 
+		 biggest_2_end<T>(v, i);
+}	
+~~~
+
 
 
