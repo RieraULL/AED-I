@@ -63,7 +63,7 @@ public:
 	}
 	
 	T& operator[](int pos) {
-		return at(pos);
+		return at(i);
 	}
 
 	ostream& write(ostream& os) const{

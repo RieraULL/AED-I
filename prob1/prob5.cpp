@@ -1,12 +1,16 @@
-#pragma once
-
 #include <cstdio>
+#include <cstdlib>
 #include <iostream>
 #include <iomanip>
 
 #include <cassert>
 
+#define MAX_VAL 100
+#define VECTOR_SZ 10
+
 using namespace std;
+
+namespace AED {
 
 template <class T>
 class vector_t{
@@ -44,6 +48,12 @@ public:
 		return sz_;
 	}
 
+	void init_random(int max)
+	{
+		for(int i = 0; i < sz_; i++)
+			at(i) = rand() % max + 1;
+	}
+
 	const T& at(int pos) const{
 		
 		assert((pos < sz_) && ((pos >= 0)));
@@ -68,8 +78,6 @@ public:
 
 	ostream& write(ostream& os) const{
 	
-		os <<  sz_ << endl;
-
 		for(int i = 0; i < sz_; i ++)
 		 	os << v_[i] << " ";
 
@@ -77,17 +85,6 @@ public:
 		return os;
 	}
 
-	istream& read(istream& is){
-	
-		is >> sz_;
-
-		resize(sz_);
-
-		for(int i = 0; i < sz_; i ++)
-		 	is >> v_[i];
-
-		return is;
-	}
 
 private:
 
@@ -106,13 +103,68 @@ private:
 };
 
 template <>
-ostream& vector_t<double>::write(ostream& os) const{
-
-	os << setw(8) <<  sz_ << endl;
+ostream& vector_t<int>::write(ostream& os) const{
 
 	for(int i = 0; i < sz_; i ++)
-	 	os << setw(8) << fixed << setprecision(2) << v_[i] << " ";
-
+	 	os << setw(3) << v_[i] << " ";
 
 	return os;
 }
+
+ostream& operator<<(ostream& os, const vector_t<int>& v)
+{
+	v.write(os);
+	return os;
+}
+
+template<class T>
+void swap(T& a, T& b)
+{
+	T aux = a;
+	a = b;
+	b = aux;
+}
+
+template<class T>
+bool unordered(const T& a, const T& b)
+{
+	return a > b;
+}
+
+template<class T>
+void biggest_2_end(vector_t<T>& v, int end_v)
+{
+	for(int i = 0; i <= end_v - 1; i++)
+		if (unordered<T>(v[i], v[i + 1]))
+			swap<T>(v[i], v[i + 1]);
+}
+
+template<class T>
+void bubble_sort(vector_t<T>& v)
+{
+	for(int i = v.size() - 1; i >= 1; i--) {
+		 biggest_2_end<T>(v, i);
+#ifdef DEBUGGING
+		cout << "i: " << i << endl;
+		cout << "    " << v << endl; cout << endl;
+#endif
+	}
+}
+
+}
+
+int main(void)
+{
+	AED::vector_t<int> v(VECTOR_SZ);
+	v.init_random(MAX_VAL);
+
+	cout << v << endl;
+
+	AED::bubble_sort(v);
+
+	cout << v << endl;
+
+	return 0;
+}
+
+

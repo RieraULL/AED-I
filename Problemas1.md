@@ -234,3 +234,64 @@ int main(void)
 	cout << "Impares: " << setw(4) << cont_odd(v, MAX_SZ)  << endl;	
 }
 ~~~
+
+## Problema 5
+
+### Enunciado
+
+Diseñar e implementar una función que, dado un vector, y una posición `pos` del mismo, sitúe el mayor de los elementos comprendidos entre las posiciones `0` y `pos` en la posición `pos`.
+
+
+### Solución
+
+Ref. [Prob5](prob1/prob5.cpp)
+
+Compílese usando 
+
+~~~
+g++ -g  prob5.cpp -o prob5
+~~~
+
+o
+
+~~~
+g++ -g -DDEBUGGING  prob5.cpp -o prob5
+~~~
+
+¿Cuál es la diferencia?
+
+~~~cpp
+template<class T>
+void swap(T& a, T& b)
+{
+	T aux = a;
+	a = b;
+	b = aux;
+}
+~~~
+
+El procedimiento `swap` intercambia el contenido de las dos variables `a` y `b`.
+
+~~~cpp
+template<class T>
+bool unordered(const T& a, const T& b)
+{
+	return a > b;
+}
+~~~
+
+La función `unordered` determina si las dos variables `a` y `b` están desordenadas. En concreto, devuelve `true` si `a > b`.
+
+~~~cpp
+template<class T>
+void biggest_2_end(vector_t<T>& v, int end_v)
+{
+	for(int i = 0; i <= end_v - 1; i++)
+		if (unordered<T>(v[i], v[i + 1]))
+			swap<T>(v[i], v[i + 1]);
+}
+~~~
+Finalmente, la función `biggest_2_end` mueve el mayor de los elementos situado entre las posiciones `0` y `end_v` a la posición `end_v`.
+
+
+
