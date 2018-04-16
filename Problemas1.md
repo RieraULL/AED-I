@@ -302,7 +302,7 @@ Diseñar e implementar una función que ordene en orden no decreciente utilizand
 
 ### Solución
 
-Ref. [Prob5](prob1/prob5.cpp)
+Ref. [Prob6](prob1/prob5.cpp)
 
 ~~~cpp
 template<class T>
@@ -312,6 +312,18 @@ void bubble_sort(vector_t<T>& v)
 		 biggest_2_end<T>(v, i);
 }	
 ~~~
+
+## Problema 7
+
+### Enunciado
+
+Diseñar e implementar una clase que represente un contenedor implementado por un vector que permita insertar elementos enteros de forma ordenada.
+
+
+### Solución
+
+Ref. [Prob7](prob1/prob6.cpp)
+
 
 
 
