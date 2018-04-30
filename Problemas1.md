@@ -328,7 +328,7 @@ Ref. [Prob7](prob1/prob6.cpp)
 
 ### Enunciado
 
-Diseñar e implementar una clase que represente una cola basada en una lista simplemente enlazada. Con ese propósito debe incuirse un puntero *tail* a la lista enlazada sobre la que se implementa la cola, con la posibilidad de hacer inserciones en el tail.
+Diseñar e implementar una clase que represente una cola basada en una lista simplemente enlazada. Con ese propósito debe incuirse un puntero *tail* a la lista enlazada sobre la que se implementa la cola, con la posibilidad de hacer inserciones en el tail. Así, debe haber un procedimiento de extracción por el *head* y uno de inserción por el *tail*.
 
 
 ### Solución
