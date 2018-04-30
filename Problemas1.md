@@ -324,6 +324,17 @@ Diseñar e implementar una clase que represente un contenedor implementado por u
 
 Ref. [Prob7](prob1/prob6.cpp)
 
+## Problema 8
+
+### Enunciado
+
+Diseñar e implementar una clase que represente una cola basada en una lista simplemente enlazada. Con ese propósito debe incuirse un puntero *tail* a la lista enlazada sobre la que se implementa la cola, con la posibilidad de hacer inserciones en el tail.
+
+
+### Solución
+
+Ref. [Prob8](prob1/prob8.cpp)
+
 
 
 
