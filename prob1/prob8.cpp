@@ -31,7 +31,8 @@ namespace AED {
 	{}
 
 	template <class T>
-	sll_node_t<T>::sll_node_t(T data) :
+	sll_node_t<T>::sll_node_t(T data) :    sll_node_t<T>* head(void) const { return head_; }
+    sll_node_t<T>* tail(void) const { return tail_; }
 	data_(data),
 	next_(NULL)
 	{}
@@ -95,11 +96,11 @@ namespace AED {
     
     void insert_tail(sll_node_t<T>* n) 
     { 
-	if (tail_ != NULL) {
-        tail_ -> set_next(n);
-        tail_ = n;
-      }
-      else head_ = tail_ = n;
+	if (tail_ == NULL) 
+        	head_ = n;
+        else
+		tail_->set_next(n);
+	tail_ = n;
     }
     
     sll_node_t<T>* extract_head(void) 
