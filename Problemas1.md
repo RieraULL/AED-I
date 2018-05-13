@@ -328,12 +328,172 @@ Ref. [Prob7](prob1/prob6.cpp)
 
 ### Enunciado
 
-Diseñar e implementar una clase que represente una cola basada en una lista simplemente enlazada. Con ese propósito debe incuirse un puntero *tail* a la lista enlazada sobre la que se implementa la cola, con la posibilidad de hacer inserciones en el tail. Así, debe haber un procedimiento de extracción por el *head* y uno de inserción por el *tail*.
+Diseñar e implementar una clase que represente una cola basada en una lista simplemente enlazada. Con ese propósito debe incluirse un puntero *tail* a la lista enlazada sobre la que se implementa la cola, con la posibilidad de hacer inserciones en el tail. Así, debe haber un procedimiento de extracción por el *head* y uno de inserción por el *tail*.
 
 
 ### Solución
 
 Ref. [Prob8](prob1/prob8.cpp)
+
+## Problema 9
+
+### Enunciado
+
+Diséñese una clase que represente un número como un vector de dígitos representados en una base dada.
+
+Con ese propósito mostraremos una propuesta:
+~~~cpp
+class number_t
+{
+private:
+    vector<int>  number_;
+	const int    base_;
+	const char*  map_ = "0123456789ABCDEF";
+~~~
+
+En esta propuesta se utiliza un vector para almacenar los dígitos, un atributo que indica la base, y una cadena de caracteres que nos facilitará la representación de números hasta base 16.
+
+Impleméntese dos métodos, uno para obtener la representación en base decimal del número almacenado, y otro para construir el vector de dígitos a partir de un número decimal.
+ 
+~~~cpp
+    int decimal(void) const
+    {
+        int aux = 0;
+        
+        for(int i = n_digits() - 1; i >= 0; i--)
+            aux += number_[i] * pow(base_, i);
+            
+        return aux;
+    }
+    
+    void decimal(int num)
+    {
+        int aux = num;
+        
+        if (aux / pow(base_, n_digits() - 1) > base_) {
+            cerr << "OVERFLOW ERROR!" << endl;
+            exit(1);
+        }
+        
+        for(int i = n_digits() - 1; i >= 0; i--) {
+            number_[i] = aux / pow(base_, i);
+            aux = aux % (int)(pow(base_, i));
+        }
+    } 
+~~~
+
+Impleméntese un método recursivo que genere todos los números posibles a partir de la base y el número de dígitos especificado por la clase.
+
+~~~cpp
+	void generate(int i)
+	{
+	    if (i < 0) {
+	        
+	        write(cout);
+	        cout << endl;
+	    }
+	    else {
+	        
+	        for(int b = 0; b < base_; b ++){
+	            number_[i] = b;
+	            generate(i - 1);
+	        }
+	    }
+	}
+~~~
+
+Impleméntese un método no recursivo que genere todos los números posibles a partir de la base y el número de dígitos especificado por la clase. El procedimiento debe estar basado en una pila.
+
+En primer lugar se definirá una clase de pares. Cada uno de estos dos elementos representa el valor de un dígito, y la posición en el vector (o el nivel en el árbol de ramificación) del mismo.
+
+~~~cpp
+class par_t {
+private:
+  int b_;
+  int level_;
+public:
+    par_t(int b, int level):
+    b_(b), level_(level) {}
+    
+    ~par_t(void) {}
+    
+    int get_b(void) const {return b_;}
+    int get_level(void) const {return level_;}
+};
+~~~
+
+El siguiente sigue un esquema similar al recorrido en profundidad de un árbol. Con ese fin, inicializa la pila con todos los posible valores que puede tomar el último dígito.
+
+Seguidamente, una estructura iterativa, que itera mientras la pila no esté vacía, extrae el primer elemento disponible de la pila. Ese elemento nos indicará el valor de un dígito y su posición dentro del vector. Así que se establece dicho valor en la posición indicada. Si la posición es la primera, entonces se imprime el contenido del vector. Si no, se introducen en la pila todos los posibles valores que pueden tener los dígitos en la posición precedente.
+
+~~~cpp
+	void generate_all2(void)
+	{
+	    stack<par_t> Pila;
+	    
+	    for(int b = 0; b < base_; b++) 
+	        Pila.push(par_t(b, n_digits() - 1));
+	    
+	    while(!Pila.empty())
+	    {
+	        const par_t par = Pila.top();
+	        Pila.pop();
+	        
+	        const int b = par.get_b();
+	        const int l = par.get_level();
+	        
+	        number_[l] = b;
+	        
+	        if (l <= 0) {
+	            write(cout);
+	            cout << endl;	            
+	        } else {
+	            for(int b = 0; b < base_; b++) 
+	                Pila.push(par_t(b, l - 1));	            
+	        }
+	    }
+	}
+~~~	
+
+Sobrecargar el operador pre-incremento. Con esta finalidad se incrementará el valor del primer dígito y se invocará un método recursivo que corrige el exceso en caso de que se produzca.
+
+~~~cpp
+	number_t& operator++(void)
+	{
+        number_[0]++;
+        corrige_exceso(0);
+		
+		return *this;
+	}
+~~~
+
+~~~cpp
+	void corrige_exceso(int i)
+	{
+	    if (i < n_digits())
+	    {
+	        if (number_[i] >= base_) {
+	            
+	            if(i + 1 < n_digits()) {
+	                
+	                number_[i] = 0;
+	                number_[i + 1]++;
+	                
+	                corrige_exceso(i + 1);
+	            }
+	            else{ 
+	                cerr << "OVERFLOW ERROR!!!" << endl;
+	                exit(1);
+	            }
+	        }
+	    }
+	}
+~~~
+
+### Solución
+
+Ref. [Prob8](prob1/prob9.cpp)
+
 
 
 
