@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <stack>
 using namespace std;
 
 #include "sll_node_t.hpp"
@@ -35,6 +36,95 @@ public:
       void insert_tail(sll_node_t<T>* n);
 
       sll_node_t<T>* extract_tail(void);
+
+      void invPar(const sll_t<T>& L)
+      {
+            invPar(L.head_);
+      }
+      
+      void invPar(const sll_node_t<T>* n)
+      {
+            if (n != NULL){
+                  const T& n_d = n->get_data();
+                  if (n_d % 2 != 0)
+                        insert_head(new sll_node_t<T>(n_d));
+                        
+                  invPar(n->get_next());
+            }
+      }
+
+      void merge1(sll_t<T>& L1, sll_t<T>& L2)
+      {
+            sll_node_t<T>* L1_h = L1.head_;
+            sll_node_t<T>* L2_h = L2.head_;
+            
+            stack<sll_node_t<T>*> pila;
+
+            while ((L1_h != NULL) && (L2_h != NULL)) {
+                  
+                  const T& L1_d = L1_h->get_data();
+                  const T& L2_d = L2_h->get_data();
+
+                  if (L1_d < L2_d) {
+                        L1_h = L1_h->get_next();
+                        sll_node_t<T>* L1_a = L1.extract_head();
+                        pila.push(L1_a);
+                  } else {
+                        L2_h = L2_h->get_next();
+                        sll_node_t<T>* L2_a = L2.extract_head();
+                        pila.push(L2_a);
+                  }
+            }
+
+            while (L1_h != NULL) {
+                  L1_h = L1_h->get_next();
+                  sll_node_t<T>* L1_a = L1.extract_head();
+                  pila.push(L1_a);
+            }
+            
+            while (L2_h != NULL) {
+                  L2_h = L2_h->get_next();
+                  sll_node_t<T>* L2_a = L2.extract_head();
+                  pila.push(L2_a);
+            }       
+
+            while (!pila.empty())
+            {
+                 sll_node_t<T>* aux = pila.top();
+                 pila.pop();
+                 insert_head(aux);
+            }
+      }
+      
+      void merge2(const sll_t<T>& L1, const sll_t<T>& L2)
+      {
+            sll_node_t<T>* L1_h = L1.head_;
+            sll_node_t<T>* L2_h = L2.head_;
+
+            while ((L1_h != NULL) && (L2_h != NULL)) {
+                  
+                  const T& L1_d = L1_h->get_data();
+                  const T& L2_d = L2_h->get_data();
+
+                  if (L1_d > L2_d) {
+                        insert_head(new sll_node_t<T>(L1_d));
+                        L1_h = L1_h->get_next();
+                  } else {
+                        insert_head(new sll_node_t<T>(L2_d));
+                        L2_h = L2_h->get_next();
+                  }
+            }
+
+            while (L1_h != NULL) {
+                  insert_head(new sll_node_t<T>(L1_h->get_data()));
+                  L1_h = L1_h->get_next();
+            }
+            
+            while (L2_h != NULL) {
+                  insert_head(new sll_node_t<T>(L2_h->get_data()));
+                  L2_h = L2_h->get_next();
+            }       
+      }      
 
 private:
 

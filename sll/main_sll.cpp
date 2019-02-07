@@ -9,73 +9,77 @@ using namespace std;
 
 int main(void)
 {
-	AED::sll_t<char> lista;
+ /*     {
+	AED::sll_t<char> L1;
+      AED::sll_t<char> L2;
 
-	for(int i = 0; i < N_CHARS; i++)
-		lista.insert_head( new AED::sll_node_t<char>('a' + i) );
+	for(int i = 14; i >= 0; i-=2)
+		L1.insert_head( new AED::sll_node_t<char>('a' + i) );
+            
+	for(int i = 25; i >= 0; i-=2)
+		L2.insert_head( new AED::sll_node_t<char>('a' + i) );
 
-	lista.write(cout);
-	cout << endl;
-
-	AED::sll_node_t<char>* nodo = lista.extract_head();
-	char dato = nodo->get_data();
-	delete nodo;
-
-	cout << "Dato 1: " << dato << endl;
-
-	nodo = lista.extract_head();
-	dato = nodo->get_data();
-	delete nodo;
-
-	cout << "Dato 2: " << dato << endl;
-
-	nodo = lista.extract_head();
-	dato = nodo->get_data();
-	delete nodo;
-
-	cout << "Dato 3: " << dato << endl;
-
-	lista.write(cout);
-	cout << endl;
-
-	nodo = lista.extract_after(lista.head());
-	dato = nodo->get_data();
-	delete nodo;
-
-	cout << "Dato 4: " << dato << endl;
-
-	nodo = lista.extract_after(lista.head()->get_next());
-	dato = nodo->get_data();
-	delete nodo;
-
-	cout << "Dato 5: " << dato << endl;
-
-	lista.write(cout);
-	cout << endl;
-
-	nodo = lista.head();
-	dato = nodo->get_data();
-
-	cout << "Dato 6: " << dato << endl;
-
-	lista.write(cout);
-	cout << endl;
+      AED::sll_t<char> L;
       
-      lista_char_t lista_char;
+      L1.write(cout); cout << endl;
+      L2.write(cout); cout << endl;
+      L.write(cout);  cout << endl;
       
-	for(int i = 0; i < N_CHARS; i++)
-		lista_char.insert_head('a' + i); 
-
-      lista_char.write(cout);
       cout << endl;
+      
+      L.merge1(L1, L2);
 
-      while(!lista_char.empty()){
-            
-            cout << lista_char.extract_head() << endl;
-            
-            lista_char.write(cout);
-            cout << endl;
+      L1.write(cout); cout << endl;
+      L2.write(cout); cout << endl;
+      L.write(cout);  cout << endl;
+	cout << endl;
       }
+ */     
+ /*     {
+	AED::sll_t<char> L1;
+      AED::sll_t<char> L2;
 
+	for(int i = 0; i <=14; i+=2)
+		L1.insert_head( new AED::sll_node_t<char>('a' + i) );
+            
+	for(int i = 1; i <= 25; i+=2)
+		L2.insert_head( new AED::sll_node_t<char>('a' + i) );
+
+      AED::sll_t<char> L;
+      
+      L1.write(cout); cout << endl;
+      L2.write(cout); cout << endl;
+      L.write(cout);  cout << endl;
+      
+      cout << endl;
+      
+      L.merge2(L1, L2);
+
+      L1.write(cout); cout << endl;
+      L2.write(cout); cout << endl;
+      L.write(cout);  cout << endl;
+	cout << endl;
+      }   
+*/      
+      {
+	AED::sll_t<char> L1;
+            
+	for(int i = 25; i >= 0; i--)
+		L1.insert_head( new AED::sll_node_t<char>('a' + i) );
+
+      AED::sll_t<char> L;
+      
+      L1.write(cout); cout << endl;
+      L.write(cout);  cout << endl;
+      
+      cout << endl;
+      
+      L.invPar(L1);
+
+      L1.write(cout); cout << endl;
+      L.write(cout);  cout << endl;
+	cout << endl;
+      }         
+   
 	return 0;
 }
