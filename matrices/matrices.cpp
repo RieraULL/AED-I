@@ -35,11 +35,17 @@ class  vector_t {
         
         int& at(int i)
         {
+            assert(i >= 0);
+            assert(i < sz_);
+            
             return v_[i];
         }
         
         int at(int i) const
         {
+            assert(i >= 0);
+            assert(i < sz_);            
+            
             return v_[i];
         }
         
@@ -206,12 +212,45 @@ class matrix_t {
                         sum += at(i,j);
                         
             return sum;
-        }          
+        }   
+        
+        void suma(const matrix_t& A, const matrix_t& B)
+        {
+            assert(get_m() == A.get_m());
+            assert(get_m() == B.get_m());
+            assert(get_n() == A.get_n());
+            assert(get_n() == B.get_n());
+            
+            for(int i = 1; i <= get_m(); i++)
+                for(int j = 1; j <= get_n(); j++)
+                    at(i,j) = A.at(i,j) + B.at(i,j);
+        }
+        
+        void producto(const matrix_t& A, const matrix_t& B)
+        {
+            assert(get_m()   == A.get_m());
+            assert(get_n()   == B.get_n());
+            assert(A.get_n() == B.get_m());
+            
+            for(int i = 1; i <= get_m(); i++)
+                for(int j = 1; j <= get_n(); j++) {
+                    
+                    at(i,j) = 0;
+                    
+                    for(int k = 1; k <= A.get_n(); k++)
+                        at(i,j) += A.at(i,k) * B.at(k,j);
+                }
+        }        
         
     private:
         int pos(int i, int j) const
         {
-            return (i - 1) * n_ + j;
+            assert(i >= 1);
+            assert(j >= 1);
+            assert(i <= get_m());
+            assert(j <= get_n());
+            
+            return (i - 1) * n_ + j - 1;
         }
         
 };
@@ -233,6 +272,45 @@ int main(void)
     cout << "Suma triangular inf. sin diagonal : " << setw(5) << A.suma_tria_inf() << endl;    
     cout << "Suma triangular sup. con diagonal : " << setw(5) << A.suma_tria_sup_diag() << endl;
     cout << "Suma triangular sup. sin diagonal : " << setw(5) << A.suma_tria_sup() << endl;
+    cout << endl;
+    
+    matrix_t B(3,4);
+    matrix_t C(3,4);
+    matrix_t D(3,4);
+    
+    B.init_random(2);
+    C.init_random(3);
+    
+    D.suma(B, C);
+    
+    cout << "B" << endl;
+    B.write(cout);
+    cout << endl;
+    cout << "C" << endl;
+    C.write(cout);
+    cout << endl;
+    cout << "D = B + C" << endl;
+    D.write(cout);
+    cout << endl;
+    
+    matrix_t E(3,4);
+    matrix_t F(4,5);
+    matrix_t G(3,5);
+    
+    E.init_random(2);
+    F.init_random(3);
+    
+    G.producto(E, F);   
+    
+    cout << "E" << endl;
+    E.write(cout);
+    cout << endl;
+    cout << "F" << endl;
+    F.write(cout);
+    cout << endl;
+    cout << "G = E x F" << endl;
+    G.write(cout);
+    cout << endl;    
     
     return 0;
 }
