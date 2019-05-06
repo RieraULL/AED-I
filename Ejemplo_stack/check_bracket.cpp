@@ -25,7 +25,7 @@ bool check_bracket(const string& s)
         if (pos < NTOKENS)             // Qué significa esto?
             pila.push(pos + NTOKENS);  // Y esto?
         else {
-            if (pos == pila.top())     // Qué significa esta condición?
+            if ((pila.empty() == false) && (pos == pila.top()))     // Qué significa esta condición?
                 pila.pop();
             else
                 check = false;
